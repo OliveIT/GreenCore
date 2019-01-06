@@ -1,0 +1,30 @@
+.navbar-default {
+    background-color: #f8f8f8;
+    border-color: #e7e7e7;
+    font-size: 15px;
+}
+
+.navbar-default a{
+    color: black;
+}
+
+/*.search-option{
+    float: bottom;
+}*/
+
+.location-list ul {
+    display: block;
+    /*display: -ms-flexbox;*/
+    /*display: -webkit-flex;*/
+    /*display: flex;*/
+    /*-webkit-flex-flow: wrap column;*/
+    /*flex-flow: wrap column;*/
+    /*max-height: 150px;*/
+}
+.location-list ul li {
+    float: left;
+    width: 50%;
+}
+.location-list ul li a{
+    text-decoration: none;
+}
