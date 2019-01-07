@@ -14,7 +14,11 @@
                             </div>
                         @endif
 
-                        You are logged in!
+                        @if(auth()->user()->user_role == 'Admin')
+                            You are Administrator!
+                        @else
+                            You are logged in!
+                        @endif
                         <br>
                         <br>
                         <br>
