@@ -29,4 +29,13 @@ class SwitchController extends Controller
         $accounts = SwitchAccount::findCurrentSwitch();
         return view("switch.view", ['switchAccounts' => $accounts]);
     }
+
+    public function add() {
+        return view("switch.add");
+    }
+
+    public function addAccount(Request $request) {
+        $utilityname = $request->input('utilityname');
+        $uid = $request->input('uid');
+    }
 }

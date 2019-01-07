@@ -15,9 +15,9 @@
                 <label class="btn btn-outline-primary btn-lg">
                     <input type="radio" name="options" id="option2" autocomplete="off" checked> Active
                 </label> -->
-                <a class="btn btn-outline-primary btn-lg w-100" id="option-add">
+                <label class="btn btn-outline-primary btn-lg w-100" id="option-add">
                     <input type="radio" name="options" autocomplete="off" checked> Add Account
-                </a>
+                </label>
             </div>
         </div>
     </div>
@@ -28,6 +28,7 @@
 <script>
 $(function() {
     $("#option-add").bind("click", function(e) {
+        window.open("{{ route('add-switch-account') }}", "_self");
     });
 })
 </script>
