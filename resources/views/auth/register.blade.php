@@ -65,26 +65,7 @@
                     <div class="col-md-12">
                         <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                     </div>
-                </div>
-
-                
-                <div class="form-group{{ $errors->has('user_role') ? ' has-error' : '' }}">
-                    <label for="user_role" class="col-md-4 control-label">User Role</label>
-
-                    <div class="col-md-12">
-                        <select name="user_role" class="form-control" title="Select an user type">
-                            <option value="Student">Student</option>
-                            <option value="Teacher">Teacher</option>
-                        </select>
-
-                        @if ($errors->has('user_role'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('user_role') }}</strong>
-                            </span>
-                        @endif
-                    </div>
-                </div>
-                
+                </div>                
 
                 <div class="form-group">
                     <div class="col-md-12">

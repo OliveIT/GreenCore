@@ -55,7 +55,6 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
-            'user_role'=>'required'
         ]);
     }
 
@@ -72,7 +71,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
             'email_token' => base64_encode($data['email']),
-            'user_role'=>$data['user_role']
+            'user_role'=>"user"
         ]);
     }
 
