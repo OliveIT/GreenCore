@@ -17,9 +17,7 @@ class SwitchAccount
     public function handle($request, Closure $next)
     {
         if (!Auth::user()->curUserId) {
-            echo "switch account";
-            exit();
-//            return redirect('switch');
+            return redirect('switch');
         }
 
         return $next($request);

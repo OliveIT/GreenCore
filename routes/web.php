@@ -11,6 +11,7 @@ Route::get('404',function (){
 
 Auth::routes();
 Route::get('/verifyemail/{token}', 'Auth\RegisterController@verify');
+Route::get('/switch', 'SwitchController@index')->name('switch');
 
 Route::middleware(['switch'])->group(function () {
     Route::get('/home', 'HomeController@index')->name('home');
