@@ -22,14 +22,14 @@
                         <br>
                         <br>
                         <br>
-                            @if(auth()->user()->verified == '0')
-                                <div class="alert alert-danger">
+                        @if(auth()->user()->verified == '0')
+                            <div class="alert alert-danger">
 
-                                    please <strong> verify </strong> your account.Without verification you can not
-                                    submit your post!
+                                please <strong> verify </strong> your account.Without verification you can not
+                                submit your post!
 
-                                </div>
-                            @endif
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>

@@ -83,11 +83,18 @@ class RegisterController extends Controller
      public function register(Request $request) 
      {
         $this->validator($request->all())->validate();
+//Only for test mode.
         event(new Registered($user = $this->create($request->all())));
 
-        dispatch(new SendVerificationEmail($user));
+//        dispatch(new SendVerificationEmail($user));
 
-        return view('verification');
+//        return view('verification');
+
+
+//        $user = $this->create($request->all());
+        return view('email.verify_account')->with([
+            'email_token'=>$user->email_token
+        ]);
  
      }
 
