@@ -1,10 +1,14 @@
-#header .container-fluid {
+header {
     background-color: #bce0fd;
 }
-#header .navbar-brand {
-    height: inherit;
-}
-#header .navbar-nav li > a {
+header .nav-link {
     color: #2499fb;
     font-weight: bold;
+}
+
+h2, label, p {
+    color: #2499fb;
+}
+.inline-block {
+    display: inline-block;
 }

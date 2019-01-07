@@ -9,57 +9,31 @@
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    
     {{--<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">--}}
-    <link rel="stylesheet" type="text/css" href="{{asset('/font-awesome/css/font-awesome.css')}}"/>
+    <!-- <link rel="stylesheet" type="text/css" href="{{asset('/font-awesome/css/font-awesome.css')}}"/> -->
     <link rel="stylesheet" type="text/css" href="{{asset('main.css')}}"/>
-
-
-
 </head>
 <body>
 
-<section id="header">
-    <div class="row">
-        <div class="col-md-12">
-
-            <nav class="navbar navbar-default">
-                <div class="container-fluid">
-                    <!-- Brand and toggle get grouped for better mobile display -->
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                                data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <!--<a class="navbar-brand" href="{{url('/')}}">Teacher & Student Portal</a>-->
-                        <a class="navbar-brand" href="{{url('/')}}">
-                            <img src="{{asset('assets/images/brand.png')}}"/>
-                        </a>
-                    </div>
-
-                    <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        @if (Route::has('login'))
-                            <ul class="nav navbar-nav navbar-right">
-                                @if (Auth::check())
-                                    <li><a href="{{ url('/home') }}">Home</a></li>
-                                @else
-                                    <li><a href="{{ url('/login') }}">Login</a></li>
-                                    <li><a href="{{ url('/register') }}">Register</a></li>
-                                @endif
-                            </ul>
-                        @endif
-
-                    </div>
-                </div>
-            </nav>
-        </div>
-    </div>
-</section>
+<header class="navbar navbar-expand flex-column flex-md-row bd-navbar">
+    <a class="navbar-brand mr-0 mr-md-2" href="{{url('/')}}" aria-label="Bootstrap">
+        <img src="{{asset('assets/images/brand.png')}}"/>
+    </a>
+    @if (Route::has('login'))
+    <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+        @if (Auth::check())
+            <li class="nav-item"><a class="nav-link p-2" href="{{ url('/home') }}">Home</a></li>
+        @else
+            <li class="nav-item"><a class="nav-link p-2" href="{{ url('/login') }}">Login</a></li>
+            <li class="nav-item"><a class="nav-link p-2" href="{{ url('/register') }}">Register</a></li>
+        @endif
+    </ul>
+    @endif
+</header>
 {{--search section--}}
 
 <section>
