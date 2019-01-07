@@ -12,3 +12,16 @@ h2, label, p {
 .inline-block {
     display: inline-block;
 }
+
+.btn-choose-account > .btn {
+    border-radius: 0px;
+    border: 1px solid #2499fb;
+    color: #2499fb;
+    margin: .5em 0px;
+    padding: 2em;
+    font-weight: bold;
+}
+.btn-choose-account > .btn.active {
+    background-color: #bce0fd !important;
+    color: #2499fb !important;
+}

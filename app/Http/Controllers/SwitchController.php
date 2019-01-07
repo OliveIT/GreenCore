@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Location;
 use Illuminate\Http\Request;
-use App\Models\UserSwitch;
+use App\Models\SwitchAccount;
 use Session;
 
 class SwitchController extends Controller
@@ -26,7 +26,7 @@ class SwitchController extends Controller
      */
     public function index()
     {
-        $accounts = UserSwitch::findCurrentSwitch();
-        return view("switch.view", $accounts);
+        $accounts = SwitchAccount::findCurrentSwitch();
+        return view("switch.view", ['switchAccounts' => $accounts]);
     }
 }

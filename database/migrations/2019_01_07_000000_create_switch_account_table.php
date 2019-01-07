@@ -15,7 +15,7 @@ class CreateSwitchAccountTable extends Migration
     {
         Schema::create('switchaccount', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->nullable(false)->change();
+            $table->integer('user_id')->nullable(false);
             $table->string('utilityname')->nullable(false);
             $table->string('uid')->nullable(false);
             $table->timestamps();
