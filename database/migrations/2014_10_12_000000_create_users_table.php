@@ -21,9 +21,7 @@ class CreateUsersTable extends Migration
             $table->tinyInteger('verified')->default(0);
             $table->string('email_token')->nullable();
             $table->integer('phone_number')->nullable();
-            $table->integer('location_id')->nullable();
-            $table->string('last_level_education')->nullable();
-            $table->text('image')->nullable();
+
             $table->string('user_role')->nullable();
             $table->rememberToken();
             $table->timestamps();
