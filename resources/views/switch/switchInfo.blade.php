@@ -15,8 +15,9 @@
         <div class="form-group col-md-4">
             <label for="state">State</label>
             <select id="state" class="form-control" name="state" value="{{ $data ['state'] }}" required>
-                <option selected>Choose...</option>
-                <option>...</option>
+                @foreach($geonames as $geoname)
+                <option value="{{ $geoname->state }}">{{ $geoname->state }}</option>
+                @endforeach
             </select>
         </div>
     </div>
@@ -42,7 +43,7 @@
 
     <div class="form-group">
         <label for="utility_password">Utility Password</label>
-        <input id="utility_password" type="text" class="form-control" name="utility_password" placeholder="Utility Password" {{ $newItem ? 'required' : '' }}>
+        <input id="utility_password" type="password" class="form-control" name="utility_password" placeholder="Utility Password" {{ $newItem ? 'required' : '' }}>
     </div>
 
     <div class="form-group">

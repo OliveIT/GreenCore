@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Location;
 use Illuminate\Http\Request;
+use App\Models\Geonames;
 use App\Models\SwitchAccount;
 use App\Models\UtilityCompany;
 use Session;
@@ -41,10 +42,12 @@ class SwitchController extends Controller
             'utility_user' => '',
         ];
 
+        $geonames = Geonames::getStates();
         $utilityCompanies = UtilityCompany::all(['id', 'name']);
 
         return view("switch.add", [
             'data' => $defaultData,
+            'geonames' => $geonames,
             'utility_company' => $utilityCompanies
         ]);
     }

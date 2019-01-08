@@ -10,6 +10,7 @@
 
             @include('switch.switchInfo', [
                 'data' => $data, 
+                'geonames' => $geonames,
                 'utility_company' => $utility_company,
                 'newItem' => true])
         </div>
