@@ -5,10 +5,10 @@ header .nav-link {
     color: #2499fb;
     font-weight: bold;
 }
-
+/*
 h2, label, p {
     color: #2499fb;
-}
+}*/
 .inline-block {
     display: inline-block;
 }
@@ -24,4 +24,8 @@ h2, label, p {
 .btn-choose-account > .btn.active {
     background-color: #bce0fd !important;
     color: #2499fb !important;
+}
+
+.box-co2-water img {
+    width: 80px;
 }
