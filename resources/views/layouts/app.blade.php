@@ -31,9 +31,11 @@
                     <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Login</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">Register</a></li>
                 @else
-                <li class="nav-item"><a class="nav-link" href="{{ url('/user/view') }}">Profile</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Account: {{ Auth::User()->name }}
+                    {{ Auth::User()->switch_account_id ? " | ".Session::get("switchaccount")->street : "" }}</a></li>
+                <!-- <li class="nav-item"><a class="nav-link" href="{{ url('/user/view') }}">Profile</a></li> -->
                 @if(auth()->user()->verified == '1')
-                <li class="nav-item"><a class="nav-link" href="{{url('/post/create')}}">Post</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{url('/switch')}}">Switch Account</a></li>
                 @endif
                     <li class="nav-item dropdown">
                         <a href="#" class="nav-item nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
