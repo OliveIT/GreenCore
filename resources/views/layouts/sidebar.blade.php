@@ -14,7 +14,7 @@
             <a class="nav-link" href="{{ url('/referrals') }}">Referrals</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{ url('/user/view') }}">Profile</span></a>
+            <a class="nav-link" href="{{ url('/profile') }}">Profile</span></a>
         </li>
     </ul>
 </div>
