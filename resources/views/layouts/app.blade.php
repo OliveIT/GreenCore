@@ -35,11 +35,11 @@
                     {{ Auth::User()->switch_account_id ? " | ".Session::get("switchaccount")->street : "" }}</a></li>
                 <!-- <li class="nav-item"><a class="nav-link" href="{{ url('/user/view') }}">Profile</a></li> -->
                 @if(auth()->user()->verified == '1')
-                <li class="nav-item"><a class="nav-link" href="{{url('/switch')}}">Switch Account</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{url('/switch')}}"><u>Switch Account</u></a></li>
                 @endif
                     <li class="nav-item dropdown">
                         <a href="#" class="nav-item nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            {{ Auth::user()->name }}
+                            <u>{{ Auth::user()->name }}</u>
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" role="menu">
@@ -59,7 +59,17 @@
             @endif
         </header>
         @yield('message')
-        @yield('content')
+
+        <div class="container-fluid mt-3">
+            <div class="row">
+                <div class="col-md-2 d-none d-md-block bg-light sidebar">
+                    @include('layouts.sidebar')
+                </div>
+                <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                    @yield('content')
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Scripts -->
