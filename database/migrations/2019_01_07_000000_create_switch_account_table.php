@@ -21,8 +21,8 @@ class CreateSwitchAccountTable extends Migration
             $table->string('state')->nullable(false);
             $table->integer('zipcode')->nullable(false);
             $table->integer('utility_company_id')->nullable(false);
-            $table->integer('utility_user')->nullable(false);
-            $table->integer('utility_password')->nullable(false);
+            $table->string('utility_user')->nullable(false);
+            $table->string('utility_password')->nullable(false);
             $table->timestamps();
         });
     }
