@@ -25,6 +25,11 @@ Route::middleware(['switch'])->group(function () {
     Route::post('/user/edit/{id}/update','UserController@update');
     Route::get('/user/delete/{id}/delete','UserController@destroy');
 
+    /*Billing route*/
+    Route::get('/bill','BillController@index');
+    Route::get('/bill/view/{id}','BillController@viewBill');
+    Route::get('/payment','BillController@payment');
+
     /*Locations route*/
     Route::get('/location/create','LocationController@create');
     Route::post('/location/create','LocationController@store');

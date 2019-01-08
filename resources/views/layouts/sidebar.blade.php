@@ -4,7 +4,7 @@
             <a class="nav-link active" href="{{ url('/home') }}">Dashboard</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{ url('/billing') }}">Billing</span></a>
+            <a class="nav-link" href="{{ url('/bill') }}">Billing</span></a>
             <a class="nav-link ml-3" href="{{ url('/payment') }}">Payment History</span></a>
         </li>
         <li class="nav-item">
