@@ -16,6 +16,9 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\Event' => [
             'App\Listeners\EventListener',
         ],
+        'Illuminate\Auth\Events\Login' => [
+            'App\Listeners\EventListener',
+        ],
     ];
 
     /**
@@ -27,6 +30,13 @@ class EventServiceProvider extends ServiceProvider
     {
         parent::boot();
 
-        //
+        Event::listen('auth.login', function()
+        {
+            echo "ddd";
+            exit();
+            Session::forget('switchaccount');
+            Auth::user()->switch_account_id = null;
+            Auth::user()->save();
+        });
     }
 }
