@@ -31,7 +31,7 @@ class SwitchController extends Controller
     public function index()
     {
         $accounts = SwitchAccount::findCurrentSwitch();
-        return view("switch.view", ['switchAccounts' => $accounts]);
+        return view("switch.view", ['accounts' => $accounts]);
     }
 
     public function add() {
@@ -73,6 +73,20 @@ class SwitchController extends Controller
         $user->save();
 
         Session::put('switchaccount', $client);
+
+        return redirect('/home');
+    }
+
+    public function set($id = 0) {
+        if (!$id)
+            return redirect('/switch');
+
+        $user = Auth::user();
+        $user->switch_account_id = $id;
+        $user->save();
+
+        $switchAccount = SwitchAccount::find($id);
+        Session::put('switchaccount', $switchAccount);
 
         return redirect('/home');
     }

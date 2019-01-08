@@ -11,7 +11,7 @@ class SwitchAccount extends Model
 
     public static function findCurrentSwitch() {
         $userId = Auth::User()->id;
-        $list = SwitchAccount::where("user_id", $userId);
+        $list = SwitchAccount::where("user_id", $userId)->get();
         return $list;
     }
 }

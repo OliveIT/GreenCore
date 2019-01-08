@@ -15,6 +15,12 @@
                 <label class="btn btn-outline-primary btn-lg">
                     <input type="radio" name="options" id="option2" autocomplete="off" checked> Active
                 </label> -->
+                @foreach($accounts as $account)
+                <label class="btn btn-outline-primary btn-lg w-100 btn-account" data-id="{{ $account->id }}">
+                    <input type="radio" name="options" autocomplete="off" checked> {{ $account->street }}
+                </label>
+                @endforeach
+                
                 <label class="btn btn-outline-primary btn-lg w-100" id="option-add">
                     <input type="radio" name="options" autocomplete="off" checked> Add Account
                 </label>
@@ -30,6 +36,10 @@ $(function() {
     $("#option-add").bind("click", function(e) {
         window.open("{{ route('add-switch-account') }}", "_self");
     });
+    $(".btn-account").bind("click", function(e) {
+        const accountId = $(this).data("id");
+        window.open(`{{ url('/switch/set') }}/${accountId}`, "_self");
+    })
 })
 </script>
 @endsection

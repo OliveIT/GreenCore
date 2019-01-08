@@ -13,6 +13,7 @@ Auth::routes();
 Route::get('/verifyemail/{token}', 'Auth\RegisterController@verify');
 Route::get('/switch', 'SwitchController@index')->name('switch');
 Route::get('/switch/add', 'SwitchController@add')->name('add-switch-account');
+Route::get('/switch/set/{id}', 'SwitchController@set')->name('set-switch-account');
 Route::post('/switch/addAccount', 'SwitchController@addAccount')->name('add-switch-account-post');
 
 Route::middleware(['switch'])->group(function () {
