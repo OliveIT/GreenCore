@@ -1,9 +1,22 @@
+html {
+    height: 100%;
+}
 header {
     background-color: #bce0fd;
+    display: inline-block !important;
+}
+header > .inner {
+    display: flex;
+}
+header > .inner > .navbar-nav {
+    float: right;
 }
 header .nav-link {
     color: #2499fb;
     font-weight: bold;
+}
+header .navbar-nav .dropdown-menu-right {
+    top: inherit;
 }
 /*
 h2, label, p {
@@ -28,4 +41,8 @@ h2, label, p {
 
 .box-co2-water img {
     width: 80px;
+}
+
+footer {
+    background: #2499fb !important;
 }

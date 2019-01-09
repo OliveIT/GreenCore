@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Geonames;
+use App\Models\UtilityCompany;
 
 use Session;
 
@@ -30,5 +32,25 @@ class HomeController extends Controller
 
     public function profile() {
         return view('profile.index');
+    }
+
+    public function editProfile() {
+        $defaultData = [
+            'street' => '',
+            'city' => '',
+            'state' => '',
+            'zipcode' => '',
+            'utility_company_id' => '',
+            'utility_user' => '',
+        ];
+
+        $geonames = Geonames::getStates();
+        $utilityCompanies = UtilityCompany::all(['id', 'name']);
+
+        return view('profile.edit', [
+            'data' => $defaultData,
+            'geonames' => $geonames,
+            'utility_company' => $utilityCompanies
+        ]);
     }
 }

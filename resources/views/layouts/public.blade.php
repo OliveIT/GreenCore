@@ -65,10 +65,7 @@
 
         <div class="container-fluid mt-3">
             <div class="row">
-                <div class="col-md-2 d-none d-md-block bg-light sidebar">
-                    @include('layouts.sidebar')
-                </div>
-                <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <main role="main" class="col-md-12 col-lg-12 px-4">
                     @yield('content')
                 </main>
             </div>

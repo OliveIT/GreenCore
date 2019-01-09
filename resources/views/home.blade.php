@@ -104,12 +104,12 @@
 
 @section('js')
 <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="/js/flot/excanvas.min.js"></script><![endif]-->
-<script type="text/javascript" src="http://www.jqueryflottutorial.com/js/flot/jquery.flot.min.js"></script>
-<script type="text/javascript" src="http://www.jqueryflottutorial.com/js/flot/jquery.flot.time.js"></script>    
-<script type="text/javascript" src="http://www.jqueryflottutorial.com/js/flot/jshashtable-2.1.js"></script>    
-<script type="text/javascript" src="http://www.jqueryflottutorial.com/js/flot/jquery.numberformatter-1.2.3.min.js"></script>
-<script type="text/javascript" src="http://www.jqueryflottutorial.com/js/flot/jquery.flot.symbol.js"></script>
-<script type="text/javascript" src="http://www.jqueryflottutorial.com/js/flot/jquery.flot.axislabels.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.time.min.js"></script>
+<!-- <script type="text/javascript" src="http://www.jqueryflottutorial.com/js/flot/jshashtable-2.1.js"></script>
+<script type="text/javascript" src="http://www.jqueryflottutorial.com/js/flot/jquery.numberformtter-1.2.3.min.js"></script> -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.symbol.min.js"></script>
+<!-- <script type="text/javascript" src="http://www.jqueryflottutorial.com/js/flot/jquery.flot.axislabels.js"></script> -->
 <script>
 //Asia
 var rawData6 = [
@@ -145,9 +145,9 @@ var options = {
         axisLabelFontSizePixels: 12,
         axisLabelFontFamily: 'Verdana, Arial',
         axisLabelPadding: 3,
-        tickFormatter: function (v, axis) {
+        /*tickFormatter: function (v, axis) {
             return $.formatNumber(v, { format: "#,###", locale: "us" });
-        }
+        }*/
     },
     legend: {
         show: false,
@@ -191,7 +191,7 @@ $.fn.UseTooltip = function () {
         }).appendTo("body");
     }
 
-    $(this).bind("plothover", function (event, pos, item) {
+    /*$(this).bind("plothover", function (event, pos, item) {
         if (item) {
             if ((previousLabel != item.series.label) || 
                  (previousPoint != item.dataIndex)) {
@@ -216,7 +216,7 @@ $.fn.UseTooltip = function () {
             $("#tooltip").remove();
             previousPoint = null;
         }
-    });
+    });*/
 };
 </script>
 @endsection
