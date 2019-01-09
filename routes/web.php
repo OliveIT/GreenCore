@@ -19,7 +19,9 @@ Route::post('/switch/addAccount', 'SwitchController@addAccount')->name('add-swit
 Route::middleware(['switch'])->group(function () {
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/profile','HomeController@profile');
-    Route::get('/profile/edit','HomeController@editProfile');
+    Route::get('/profile/password','HomeController@editPassword');
+    Route::get('/profile/phone','HomeController@editPhone');
+    Route::get('/profile/service','HomeController@editService');
 
     /*Users route*/
     Route::get('/user/view', 'UserController@index');

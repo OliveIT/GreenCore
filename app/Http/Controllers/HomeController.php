@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Geonames;
+use App\Models\SwitchAccount;
 use App\Models\UtilityCompany;
 
 use Session;
@@ -31,10 +32,19 @@ class HomeController extends Controller
     }
 
     public function profile() {
-        return view('profile.index');
+        $accounts = SwitchAccount::findCurrentSwitch();
+        return view('profile.index', ['accounts' => $accounts]);
     }
 
-    public function editProfile() {
+    public function editPassword() {
+        return view('profile.password');
+    }
+
+    public function editPhone() {
+        return view('profile.phone');
+    }
+
+    public function editService() {
         $defaultData = [
             'street' => '',
             'city' => '',
@@ -47,7 +57,7 @@ class HomeController extends Controller
         $geonames = Geonames::getStates();
         $utilityCompanies = UtilityCompany::all(['id', 'name']);
 
-        return view('profile.edit', [
+        return view('profile.service', [
             'data' => $defaultData,
             'geonames' => $geonames,
             'utility_company' => $utilityCompanies

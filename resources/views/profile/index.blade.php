@@ -20,9 +20,6 @@
                     <p><b>User ID/Email</b></p>
                     <p class="text-muted">{{auth()->user()->email}}</p>
                 </div>
-                <div class="p-2 bd-highlight align-self-center">
-                    <a href="#" class="btn btn-outline-primary">Edit</a>
-                </div>
             </div>
         </div>
 
@@ -33,7 +30,7 @@
                     <p class="text-muted">************</p>
                 </div>
                 <div class="p-2 bd-highlight align-self-center">
-                    <a href="#" class="btn btn-outline-primary">Edit</a>
+                    <a href="{{ url('profile/password') }}" class="btn btn-outline-primary">Edit</a>
                 </div>
             </div>
         </div>
@@ -45,7 +42,7 @@
                     <p class="text-muted">{{ auth()->user()->phone_number }}</p>
                 </div>
                 <div class="p-2 bd-highlight align-self-center">
-                    <a href="#" class="btn btn-outline-primary">Edit</a>
+                    <a href="{{ url('profile/phone') }}" class="btn btn-outline-primary">Edit</a>
                 </div>
             </div>
         </div>
@@ -55,11 +52,14 @@
             <div class="d-flex bd-highlight mb-3">
                 <div class="mr-auto p-2 bd-highlight">
                     <p><b>Service Address</b></p>
-                    <select>
+                    <select class="form-control">
+                        @foreach($accounts as $account)
+                        <option value="{{ $account->street }}">{{ $account->street }}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="p-2 bd-highlight align-self-center">
-                    <a href="#" class="btn btn-outline-primary">Need to change your service address?</a>
+                    <a href="{{ url('profile/service') }}" class="btn btn-outline-primary">Need to change your service address?</a>
                 </div>
             </div>
         </div>
