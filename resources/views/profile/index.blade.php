@@ -50,7 +50,7 @@
     <div class="col-md-6">
         <div class="mt-3 mb-3">
             <div class="d-flex bd-highlight mb-3">
-                <div class="mr-auto p-2 bd-highlight">
+                <div class="mr-auto bd-highlight">
                     <p><b>Service Address</b></p>
                     <select class="form-control">
                         @foreach($accounts as $account)
@@ -58,7 +58,7 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="p-2 bd-highlight align-self-center">
+                <div class="bd-highlight align-self-center">
                     <a href="{{ url('profile/service') }}" class="btn btn-outline-primary">Need to change your service address?</a>
                 </div>
             </div>

@@ -20,7 +20,11 @@ Route::middleware(['switch'])->group(function () {
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/profile','HomeController@profile');
     Route::get('/profile/password','HomeController@editPassword');
+    Route::post('/profile/changePassword','HomeController@changePassword');
+
     Route::get('/profile/phone','HomeController@editPhone');
+    Route::post('/profile/changePhone','HomeController@changePhone');
+
     Route::get('/profile/service','HomeController@editService');
 
     /*Users route*/
