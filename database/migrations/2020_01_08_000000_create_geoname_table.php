@@ -34,6 +34,6 @@ class CreateGeonameTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('geoname');
+        Schema::dropIfExists('geonames');
     }
 }
