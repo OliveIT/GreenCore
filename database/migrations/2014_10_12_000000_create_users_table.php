@@ -44,9 +44,9 @@ class CreateUsersTable extends Migration
     {
         DB::table($table)->insert([
             [
-                'name'=>'Admin',
+                'name'=>'olivekoko',
                 'password'=>bcrypt('123456'),
-                'email'=>'kazibablubif@gmail.com',
+                'email'=>'olivekoko723@gmail.com',
                 'user_role'=>'Admin',
                 'verified'=>'1'
             ]
