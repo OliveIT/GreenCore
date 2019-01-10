@@ -27,12 +27,6 @@ Route::middleware(['switch'])->group(function () {
 
     Route::get('/profile/service','HomeController@editService');
 
-    /*Users route*/
-    Route::get('/user/view', 'UserController@index');
-    Route::get('/user/edit/{id}/edit','UserController@edit');
-    Route::post('/user/edit/{id}/update','UserController@update');
-    Route::get('/user/delete/{id}/delete','UserController@destroy');
-
     /*Billing route*/
     Route::get('/bill','BillController@index');
     Route::get('/bill/view/{id}','BillController@viewBill');
@@ -68,3 +62,13 @@ Route::middleware(['switch'])->group(function () {
     Route::get('/student/search','StudentIndexController@studentSearch');*/
 });
 
+
+Route::middleware(['adminAuth'])->group(function () {
+    /*Users route*/
+    Route::get('/user/view', 'UserController@index');
+    Route::get('/user/new','UserController@create');
+    Route::get('/user/view/{id}/view','UserController@show');
+    Route::get('/user/edit/{id}/edit','UserController@edit');
+    Route::post('/user/edit/{id}/update','UserController@update');
+    Route::get('/user/delete/{id}/delete','UserController@destroy');
+});

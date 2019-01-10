@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class SwitchAccount
+class AdminAuthentication
 {
     /**
      * Handle an incoming request.
@@ -16,10 +16,8 @@ class SwitchAccount
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::User()->user_role != "Admin"
-            && Auth::User()
-            && !Auth::User()->switch_account_id) {
-            return redirect('switch');
+        if (Auth::User()->user_role != "Admin") {
+            return redirect('/');
         }
 
         return $next($request);

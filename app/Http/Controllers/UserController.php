@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Location;
 use Illuminate\Http\Request;
 use App\User;
 use Session;
+use App\Models\SwitchAccount;
 
 class UserController extends Controller
 {
@@ -26,36 +28,16 @@ class UserController extends Controller
      */
     public function index()
     {
-        $userId = auth()->user()->id;
-        if(auth()->user()->user_role == 'Admin')
-        {
-            $users = User::leftJoin('locations','locations.id','users.location_id')
-                ->select(
-                    'users.id',
-                    'users.name',
-                    'users.email',
-                    'users.phone_number',
-                    'users.last_level_education',
-                    'locations.location_name',
-                    'user_role'
-                )
-                ->paginate(10);
-        }else{
-            $users = User::leftJoin('locations','locations.id','users.location_id')
-                ->where('users.id',$userId)
-                ->select(
-                    'users.id',
-                    'users.name',
-                    'users.email',
-                    'users.phone_number',
-                    'users.last_level_education',
-                    'locations.location_name',
-                    'user_role'
-                )
-                ->paginate(10);
-        }
+        $users = User::select(
+                'id',
+                'name',
+                'email',
+                'phone_number',
+                'user_role'
+            )->where('users.id', '!=', Auth::User()->id)
+            ->paginate(10);
 
-        return view('user.view', compact('users'));
+        return view('user.index', compact('users'));
     }
 
     /**
@@ -65,7 +47,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view("user.add");
     }
 
     /**
@@ -87,7 +69,13 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $userById = User::find($id);
+        $switchAccounts = SwitchAccount::where("user_id", $id)->get();
+
+        return view('user.view', [
+            'user' => $userById,
+            'accounts' => $switchAccounts
+        ]);
     }
 
     /**

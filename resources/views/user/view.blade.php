@@ -1,60 +1,69 @@
 @extends('layouts.app')
 
 @section('title')
-    view profile
+    View Profile
 @endsection
 @section('message')
+
     @if(Session::has('message'))
-        <div class="alert alert-danger" role="alert">
-            {{Session::get('message')}}
+        <div class="alert alert-success" role="alert">
+            {{session::get('message')}}
         </div>
     @endif
+
 @endsection
+{{--@section('errors')--}}
+
+{{--@if(count($errors)>0)--}}
+{{--<div class="alert alert-danger" role="alert">--}}
+{{--<ul>--}}
+{{--@foreach($errors->all() as $error)--}}
+{{--<li>{{$error}}</li>--}}
+{{--@endforeach--}}
+{{--</ul>--}}
+{{--</div>--}}
+{{--@endif--}}
+
+{{--@endsection--}}
 
 @section('content')
+<div class="row">
+    <div class="col-md-6">
+        <h2>User Profile</h2>
+        <div class="form-group">
+            <label class="form-label">User name</label>
+            <p class="text-muted">{{$user->name}}</p>
+        </div>
 
-            <div class="col-md-12">
-                <table class="table table-bordered">
-                    <tr class="success">
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Phone Number</th>
-                        <th>Location Name</th>
-                        <th>Institute Name</th>
-                        <th>Role Name</th>
-                        <th>Action</th>
-                    </tr>
-                    @foreach($users as $user)
-                        <tr>
-                            <td>{{$user->id}}</td>
-                            <td>{{$user->name}}</td>
-                            <td>{{$user->email}}</td>
-                            <td>{{$user->phone_number}}</td>
-                            <td>{{$user->location_name}}</td>
-                            <td>{{$user->last_level_education}}</td>
-                            <td>{{$user->user_role}}</td>
+        <div class="form-group">
+            <label>User email</label>
+            <p class="text-muted">{{$user->email}}</p>
+        </div>
 
+        <div class="form-group">
+            <label>User phone number</label>
+            <p class="text-muted">{{$user->phone_number}}</p>
+        </div>
+    </div>
 
-                            <td>
-                                <div class="btn btn-default">
-                                    <a href="{{ url('/user/edit',[$user->id,'edit']) }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit</a>
-                                </div>
+    @foreach ($accounts as $account)
+    <div class="col-md-6">
+        <h2>Account ({{ $account->street }})</h2>
+        <div class="form-group">
+            <label class="form-label">City</label>
+            <p class="text-muted">{{$account->city}}</p>
+        </div>
+        <div class="form-group">
+            <label class="form-label">State</label>
+            <p class="text-muted">{{$account->state}}</p>
+        </div>
+        <div class="form-group">
+            <label class="form-label">Zipcode</label>
+            <p class="text-muted">{{$account->zipcode}}</p>
+        </div>
+    </div>
+    @endforeach
+</div>
 
-                                <div class="btn btn-danger">
-                                    <a class="delete_link" href="{{ url('/user/delete',[$user->id,'delete']) }}"><i class="fa fa-trash" aria-hidden="true"></i>Delete</a>
-                                </div>
-                            </td>
-
-                        </tr>
-                    @endforeach
-
-                </table>
-                {{ $users->links() }}
-            </div>
-
-@endsection
-
-@section('js')
-
+<a class="btn btn-outline-primary" href="{{ url('user/view') }}">Back</a>
 @endsection

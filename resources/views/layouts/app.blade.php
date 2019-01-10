@@ -36,7 +36,7 @@
                     <li class="nav-item"><a class="nav-link" href="#">Account: {{ Auth::User()->name }}
                         {{ Auth::User()->switch_account_id ? " | ".Session::get("switchaccount")->street : "" }}</a></li>
                     <!-- <li class="nav-item"><a class="nav-link" href="{{ url('/user/view') }}">Profile</a></li> -->
-                    @if(auth()->user()->verified == '1')
+                    @if(auth()->user()->user_role != "Admin" && auth()->user()->verified == '1')
                     <li class="nav-item"><a class="nav-link" href="{{url('/switch')}}"><u>Switch Account</u></a></li>
                     @endif
                         <li class="nav-item dropdown">
