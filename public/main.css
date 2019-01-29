@@ -34,7 +34,8 @@ h2, label, p {
     padding: 2em;
     font-weight: bold;
 }
-.btn-choose-account > .btn.active {
+.btn-choose-account > .btn.active,
+.btn-choose-account > .btn:hover {
     background-color: #bce0fd !important;
     color: #2499fb !important;
 }

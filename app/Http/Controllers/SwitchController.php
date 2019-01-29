@@ -10,6 +10,7 @@ use App\Models\UtilityCompany;
 use Illuminate\Support\Facades\Auth;
 
 use Session;
+use App\InvNinja\Clients;
 
 class SwitchController extends Controller
 {
@@ -37,8 +38,8 @@ class SwitchController extends Controller
      */
     public function index()
     {
-        $accounts = SwitchAccount::findCurrentSwitch();
-        return view("switch.view", ['accounts' => $accounts]);
+        $accounts = Clients::getClientFromEmail(auth()->user()->email);
+        return view("switch.view", ['accounts' => $accounts->data]);
     }
 
     public function add() {

@@ -10,6 +10,10 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use App\Jobs\SendVerificationEmail;
+use Redirect;
+use Auth;
+
+use App\InvNinja\Clients;
 
 class RegisterController extends Controller
 {
@@ -82,6 +86,14 @@ class RegisterController extends Controller
      public function register(Request $request) 
      {
         $this->validator($request->all())->validate();
+        
+        $data = $request->all();
+        $clients = Clients::getClientFromEmail($data ["email"]);
+
+        if (count($clients->data) == 0) {
+            return Redirect::back()->withErrors(['email' => 'This email doesn\'t not exist in Invoice Ninja.']);
+        }
+
 //Only for test mode.
         event(new Registered($user = $this->create($request->all())));
 
@@ -108,6 +120,7 @@ class RegisterController extends Controller
         $user->verified = 1;
 
         if($user->save()){
+            Auth::login($user);
             return view('emailconfirm', ['user' => $user]);
         }
       }

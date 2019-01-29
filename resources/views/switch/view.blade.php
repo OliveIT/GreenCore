@@ -17,7 +17,7 @@
                 </label> -->
                 @foreach($accounts as $account)
                 <label class="btn btn-outline-primary btn-lg w-100 btn-account" data-id="{{ $account->id }}">
-                    <input type="radio" name="options" autocomplete="off" checked> {{ $account->street }}
+                    <input type="radio" name="options" autocomplete="off" checked> {{ $account->address1 }} - {{ $account->address2 }}
                 </label>
                 @endforeach
                 
