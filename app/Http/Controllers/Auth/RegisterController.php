@@ -13,7 +13,8 @@ use App\Jobs\SendVerificationEmail;
 use Redirect;
 use Auth;
 
-use App\InvNinja\Clients;
+//use App\InvNinja\Clients;
+use InvoiceNinja\Models\Client;
 
 class RegisterController extends Controller
 {
@@ -88,6 +89,7 @@ class RegisterController extends Controller
         $this->validator($request->all())->validate();
         
         $data = $request->all();
+        $client = Client::all(1);
         $clients = Clients::getClientFromEmail($data ["email"]);
 
         if (count($clients->data) == 0) {
