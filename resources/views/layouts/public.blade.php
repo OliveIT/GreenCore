@@ -34,7 +34,7 @@
                         <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">Register</a></li>
                     @else
                     <li class="nav-item"><a class="nav-link" href="#">Account: {{ Auth::User()->name }}
-                        {{ Auth::User()->switch_account_id ? " | ".Session::get("switchaccount")->street : "" }}</a></li>
+                        {{ Auth::User()->switch_account_id ? " | ".Session::get("switchaccount")->address1." - ".Session::get("switchaccount")->address2 : "" }}</a></li>
                     <!-- <li class="nav-item"><a class="nav-link" href="{{ url('/user/view') }}">Profile</a></li> -->
                     @if(auth()->user()->verified == '1')
                     <li class="nav-item"><a class="nav-link" href="{{url('/switch')}}"><u>Switch Account</u></a></li>

@@ -93,8 +93,15 @@ class SwitchController extends Controller
         $user->switch_account_id = $id;
         $user->save();
 
-        $switchAccount = SwitchAccount::find($id);
-        Session::put('switchaccount', $switchAccount);
+        $accounts = Clients::getClientFromEmail(auth()->user()->email)->data;
+        if (count($accounts) == 0)
+            return redirect('/switch');
+
+        foreach($accounts as $account)
+            if ($account->id == $id) {
+                Session::put('switchaccount', $account);
+                break;
+            }
 
         return redirect('/home');
     }

@@ -30,7 +30,10 @@ class BillController extends Controller
      */
     public function index()
     {
-        return view("bill.index");
+        $data = Invoices::getFromClientId(Session::get("switchaccount")->id)->data;
+        return view("bill.index", array(
+            "data" => $data
+        ));
     }
     
     public function viewBill()
