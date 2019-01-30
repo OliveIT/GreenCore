@@ -27,6 +27,7 @@
                 @endforeach
             </tbody>
         </table>
+        <object data="data:application/pdf;base64,<?=base64_encode($pdf)?>" type="application/pdf" style="height:500px;width:100%"></object>
     </div>
 </div>
 @endsection

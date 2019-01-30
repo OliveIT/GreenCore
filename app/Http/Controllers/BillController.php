@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Session;
 use App\InvNinja\Invoices;
 use App\InvNinja\Payments;
+use InvoiceNinja\Models\Invoice;
 
 class BillController extends Controller
 {
@@ -40,9 +41,13 @@ class BillController extends Controller
     
     public function viewBill($id = 0)
     {
+        $invoice = Invoice::find($id);
+        $pdf = $invoice->download();
+
         $data = Invoices::getFromId($id)->data;
         return view("bill.view", array(
-            "data" => $data
+            "data" => $data,
+            "pdf" => $pdf
         ));
     }
     

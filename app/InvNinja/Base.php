@@ -5,7 +5,7 @@ namespace App\InvNinja;
 class Base
 {
     public static function sendRequest($url, $isPost = false, $data = null) {
-        $API_URL = env("INVNINJA_URL", "https://invoice.greencoreelectric.com");
+        $API_URL = env("INVNINJA_URL", "https://invoice.greencoreelectric.com/api/v1");
         $TOKEN = env("INVNINJA_TOKEN", "kgz2io3ee6vviwo3egsbncxpbtsiyvhj");
 
         $ch = curl_init();
