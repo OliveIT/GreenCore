@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "54e5a8f4ef2af16ef955d04ca967494c",
+    "content-hash": "b278b4d9a2bd70a0f847ce1cef89b38f",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -151,6 +151,43 @@
                 "parser"
             ],
             "time": "2018-03-08T01:11:30+00:00"
+        },
+        {
+            "name": "invoiceninja/sdk-php",
+            "version": "v0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/invoiceninja/sdk-php.git",
+                "reference": "39bd5ffd456bff595c3cf061b115fd7747ad6781"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/invoiceninja/sdk-php/zipball/39bd5ffd456bff595c3cf061b115fd7747ad6781",
+                "reference": "39bd5ffd456bff595c3cf061b115fd7747ad6781",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "InvoiceNinja\\": "src/InvoiceNinja/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Hillel Coren",
+                    "email": "hillelcoren@gmail.com"
+                }
+            ],
+            "description": "PHP SDK to create a custom module for Invoice Ninja",
+            "homepage": "https://www.invoiceninja.com",
+            "keywords": [
+                "invoice"
+            ],
+            "time": "2017-09-30T19:03:15+00:00"
         },
         {
             "name": "jakub-onderka/php-console-color",
