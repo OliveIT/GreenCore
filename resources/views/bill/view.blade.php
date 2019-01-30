@@ -8,27 +8,23 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>Number</th>
-                    <th>Billing Period</th>
-                    <th>Total</th>
-                    <th>Balance Due</th>
-                    <th>Due Date</th>
-                    <th>Status</th>
-                    <th></th>
+                    <th>Item</th>
+                    <th>Description</th>
+                    <th>Unit Cost</th>
+                    <th>Qty / kWh</th>
+                    <th>Line Total</th>
                 </tr>
             </thead>
             <tbody>
-                @for($i = 0; $i < 7; $i ++)
+                @foreach($data->invoice_items as $index => $item)
                 <tr>
-                    <td>216</td>
-                    <td>Feb 13-Mar 16,2018</td>
-                    <td>$72.63</td>
-                    <td>$159.34</td>
-                    <td>Mar 12, 2017</td>
-                    <td>Pay Now</td>
-                    <td>View</td>
+                    <td>{{ $index }}</td>
+                    <td>{{ $item->tax_name1 }}</td>
+                    <td>{{ $item->cost }}</td>
+                    <td>{{ $item->qty }}</td>
+                    <td>{{ $item->cost * $item->qty }}</td>
                 </tr>
-                @endfor
+                @endforeach
             </tbody>
         </table>
     </div>
