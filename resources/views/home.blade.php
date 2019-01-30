@@ -120,7 +120,7 @@ var rawData6 = [
 ];
 
 var dataSet = [
-    { label: "Asia", data: rawData6, color: "#0077FF" },
+    { label: "Asia", data: rawData6, color: "#84BD00" },
 ];
 
 var options = {

@@ -6,4 +6,21 @@
 @import "variables";
 
 // Bootstrap
-@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import '~bootstrap/scss/bootstrap';
+
+//@import "bootstrap/scss/bootstrap.scss";
+
+.btn-choose-account {
+    & > .btn {
+        border-radius: 0px;
+        border: 1px solid $primary;
+        color: $primary;
+        margin: .5em 0px;
+        padding: 2em;
+        font-weight: bold;
+    }
+}
+.btn-choose-account > .btn.active,
+.btn-choose-account > .btn:hover {
+    color: $white;
+}

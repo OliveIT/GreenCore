@@ -12,10 +12,13 @@ header > .inner > .navbar-nav {
     float: right;
 }
 header .nav-link {
-    color: #2499fb;
+    color: #333;
     font-weight: bold;
     vertical-align: middle;
-    padding: 40px .5rem;
+    padding-top: 40px;
+}
+header .nav-link:hover {
+    color: #84BD00;
 }
 header .navbar-nav .dropdown-menu-right {
     top: inherit;
@@ -31,7 +34,7 @@ h2, label, p {
     display: inline-block;
 }
 
-.btn-choose-account > .btn {
+/*.btn-choose-account > .btn {
     border-radius: 0px;
     border: 1px solid #2499fb;
     color: #2499fb;
@@ -43,7 +46,7 @@ h2, label, p {
 .btn-choose-account > .btn:hover {
     background-color: #bce0fd !important;
     color: #2499fb !important;
-}
+}*/
 
 .box-co2-water img {
     width: 80px;
@@ -52,4 +55,25 @@ h2, label, p {
 
 footer {
     background: #ddd !important;
+}
+
+
+
+.dropdown-item.active,
+.dropdown-item:active,
+.dropdown-item:hover {
+    background: #84BD00;
+    color: #fff;
+}
+
+.sidebar-sticky .nav-link {
+    color: #333;
+}
+.sidebar-sticky .nav-link.active,
+.sidebar-sticky .nav-link:hover {
+    color: #84BD00;
+}
+
+a {
+    color: #84BD00;
 }
