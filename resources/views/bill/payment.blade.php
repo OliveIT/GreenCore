@@ -15,16 +15,16 @@
         </tr>
     </thead>
     <tbody>
-        @for($i = 0; $i < 7; $i ++)
+        @foreach($data as $item)
         <tr>
-            <td>0001</td>
-            <td>Manual entry</td>
-            <td>ACH</td>
-            <td>$159.34</td>
-            <td>Mar 12, 2017</td>
+            <td>{{ $item->invoice_number }}</td>
+            <td>{{ $item->transaction_reference }}</td>
+            <td>{{ $item->payment_type_id }}</td>
+            <td>$ {{ $item->amount }}</td>
+            <td>{{ $item->payment_date }}</td>
             <td><label class="badge badge-success">Completed</label></td>
         </tr>
-        @endfor
+        @endforeach
     </tbody>
 </table>
 @endsection

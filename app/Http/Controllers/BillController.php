@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 
 use Session;
 use App\InvNinja\Invoices;
+use App\InvNinja\Payments;
 
 class BillController extends Controller
 {
@@ -47,6 +48,9 @@ class BillController extends Controller
     
     public function payment()
     {
-        return view("bill.payment");
+        $data = Payments::getPayments()->data;
+        return view("bill.payment", array(
+            "data" => $data
+        ));
     }
 }
