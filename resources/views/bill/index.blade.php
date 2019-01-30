@@ -13,33 +13,21 @@
                     <th>Due Date</th>
                     <th>Bill Total</th>
                     <th>Balance Due</th>
+                    <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
+                @foreach ($data as $item)
                 <tr>
-                    <td>Mar.28-Apr. 15 2018</td>
-                    <td>Due April 23</td>
-                    <td>$123</td>
-                    <td>$223.42</td>
+                    <td>{{ $item->custom_text_value1 }}</td>
+                    <td>{{ $item->due_date }}</td>
+                    <td>{{ $item->amount }}</td>
+                    <td>{{ $item->balance }}</td>
+                    <td><a href="{{ url('bill/view/'.$item->id) }}">View Bill</a></td>
+                    <td><button class="btn btn-outline-primary">Pay</button></td>
                 </tr>
-                <tr>
-                    <td colspan="4" class="text-right">
-                        <a href="{{ url('bill/view/1') }}" class="mr-3">View Bill</a>
-                        <button class="btn btn-outline-primary btn-lg">Pay</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Mar.28-Apr. 15 2018</td>
-                    <td>Due April 23</td>
-                    <td>$123</td>
-                    <td>$223.42</td>
-                </tr>
-                <tr>
-                    <td colspan="4" class="text-right">
-                        <a href="{{ url('bill/view/2') }}" class="mr-3">View Bill</a>
-                        <button class="btn btn-outline-primary btn-lg">Pay</button>
-                    </td>
-                </tr>
+                @endforeach
             </tbody>
         </table>
         

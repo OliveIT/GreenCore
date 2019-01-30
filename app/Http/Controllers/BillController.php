@@ -10,6 +10,7 @@ use App\Models\UtilityCompany;
 use Illuminate\Support\Facades\Auth;
 
 use Session;
+use App\InvNinja\Invoices;
 
 class BillController extends Controller
 {
@@ -36,9 +37,12 @@ class BillController extends Controller
         ));
     }
     
-    public function viewBill()
+    public function viewBill($id = 0)
     {
-        return view("bill.view");
+        $data = Invoices::getFromId($id)->data;
+        return view("bill.view", array(
+            "data" => $data
+        ));
     }
     
     public function payment()
