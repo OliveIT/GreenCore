@@ -63,7 +63,7 @@
         </header>
         @yield('message')
 
-        <div class="container-fluid mt-3">
+        <div class="container-fluid mt-3 mb-4">
             <div class="row">
                 <div class="col-md-2 d-none d-md-block bg-light sidebar">
                     @include('layouts.sidebar')
@@ -75,7 +75,7 @@
         </div>
 
         <footer class="mastfoot mt-auto p-4">
-            <div class="inner text-center text-white">
+            <div class="inner text-center">
                 <p>Support</p>
                 <p>FAQs</p>
                 <p class="border-top d-inline">CustServ@GreenCoreElectric.com</p>

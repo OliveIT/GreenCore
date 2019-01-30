@@ -2,7 +2,7 @@ html {
     height: 100%;
 }
 header {
-    background-color: #bce0fd;
+    border-bottom: 1px solid #ccc;
     display: inline-block !important;
 }
 header > .inner {
@@ -14,9 +14,14 @@ header > .inner > .navbar-nav {
 header .nav-link {
     color: #2499fb;
     font-weight: bold;
+    vertical-align: middle;
+    padding: 40px .5rem;
 }
 header .navbar-nav .dropdown-menu-right {
     top: inherit;
+}
+header .navbar-brand img {
+    height: 100px;
 }
 /*
 h2, label, p {
@@ -44,6 +49,7 @@ h2, label, p {
     width: 80px;
 }
 
+
 footer {
-    background: #2499fb !important;
+    background: #ddd !important;
 }
