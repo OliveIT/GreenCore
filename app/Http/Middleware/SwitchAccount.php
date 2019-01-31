@@ -6,6 +6,7 @@ use Closure;
 use Illuminate\Support\Facades\Auth;
 use InvoiceNinja\Config as NinjaConfig;
 use Route;
+use Session;
 
 class SwitchAccount
 {
@@ -20,7 +21,7 @@ class SwitchAccount
     {
         if (Auth::User()->user_role != "Admin"
             && Auth::User()
-            && !Auth::User()->switch_account_id) {
+            && !Session::get("switchaccount")) {
             return redirect('switch');
         }
 

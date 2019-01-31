@@ -122,4 +122,25 @@ class HomeController extends Controller
         Session::put('switchaccount', $data);
         return redirect('profile');
     }
+
+    public function logout() {
+        if (Auth::User() == null)
+            return redirect("/");
+        if (Auth::User()->user_role != "Admin") {
+            Auth::logout();
+            Session::forget("switchaccount");
+
+            $admin = Session::get("adminaccount");
+            if ($admin && $admin->user_role == "Admin") {
+                Auth::login($admin);
+                return redirect("user/view");
+            }
+            return redirect("/");
+        } else {
+            Auth::logout();
+            Session::forget("switchaccount");
+            Session::forget("adminaccount");
+            return redirect("/");
+        }
+    }
 }

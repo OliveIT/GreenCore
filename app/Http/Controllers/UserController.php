@@ -127,11 +127,20 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $client = Client::find($id);
+        $user = User::find($id);
+        if ($user) {
+            Session::forget("switchaccount");
+            Session::put("adminaccount", Auth::User());
+            Auth::login($user);
+            return redirect("home");
+        } else {
+            return Redirect::back();
+        }
+        /*$client = Client::find($id);
 
         return view('user.view', [
             'client' => $client
-        ]);
+        ]);*/
     }
 
     /**

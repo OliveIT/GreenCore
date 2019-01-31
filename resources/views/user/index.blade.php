@@ -17,7 +17,7 @@
         <h2>User Management</h2>
     </div>
     <div class="bd-highlight align-self-center">
-        <a href="{{ url('user/new') }}" class="btn btn-outline-primary">
+        <a href="{{ url('user/new') }}" class="btn btn-primary">
             <i class="fa fa-plus"></i> Add</a>
     </div>
 </div>
@@ -45,7 +45,7 @@
 
             <td>
                 <div class="btn-group">
-                    <a href="{{ url('/user/view',[$user->id,'view']) }}" class="btn btn-primary">
+                    <a href="{{ url('/user/view',[$user->user_id,'view']) }}" class="btn btn-primary">
                         <i class="fas fa-tv" aria-hidden="true"> </i> View</a>
                     <a class="btn btn-danger btn-remove" href="#" data-link="{{ url('/user/delete',[$user->user_id,'delete']) }}">
                         <i class="fa fa-trash" aria-hidden="true"> </i> Delete</a>

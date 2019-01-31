@@ -30,9 +30,5 @@ class EventListener
     public function handle(Login $event)
     {
         Session::forget('switchaccount');
-        if (Auth::User()->user_role != 'Admin') {
-            Auth::User()->switch_account_id = null;
-            Auth::User()->save();
-        }
     }
 }

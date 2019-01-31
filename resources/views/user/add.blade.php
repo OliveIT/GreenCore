@@ -49,10 +49,10 @@
             <p class="invalid-feedback">{{$errors->first('phone_number')}}</p>
         </div>
         <div class="btn-group pull-right">
-            <button type="submit" class="btn btn-outline-primary">
+            <button type="submit" class="btn btn-primary">
                 <i class="fa fa-plus"></i> Add
             </button>
-            <a href="{{ url('user/view') }}" class="btn btn-outline-secondary pull-right">Back</a>
+            <a href="{{ url('user/view') }}" class="btn btn-secondary pull-right">Back</a>
         </div>
     {!! Form::close() !!}
 </div>

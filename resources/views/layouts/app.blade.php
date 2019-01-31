@@ -34,7 +34,7 @@
                         <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">Register</a></li>
                     @else
                     <li class="nav-item"><a class="nav-link" href="#">Account: {{ Auth::User()->name }}
-                        {{ Auth::User()->switch_account_id ? " | ".Session::get("switchaccount")->address1." - ".Session::get("switchaccount")->address2 : "" }}</a></li>
+                        {{ Session::get("switchaccount") ? " | ".Session::get("switchaccount")->address1." - ".Session::get("switchaccount")->address2 : "" }}</a></li>
                     <!-- <li class="nav-item"><a class="nav-link" href="{{ url('/user/view') }}">Profile</a></li> -->
                     @if(auth()->user()->user_role != "Admin" && auth()->user()->verified == '1')
                     <li class="nav-item"><a class="nav-link" href="{{url('/switch')}}">Switch Account</a></li>
@@ -51,7 +51,7 @@
                                     Logout
                                 </a>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                <form id="logout-form" action="{{ url('logoutUser') }}" method="POST" style="display: none;">
                                     {{ csrf_field() }}
                                 </form>
                             </div>

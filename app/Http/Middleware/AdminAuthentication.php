@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 use InvoiceNinja\Config as NinjaConfig;
+use Session;
 
 class AdminAuthentication
 {
@@ -17,7 +18,11 @@ class AdminAuthentication
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::User()->user_role != "Admin") {
+        if (Auth::User()->user_role == "Admin") {
+            Session::put("adminaccount", Auth::User());
+        } else if (Session::get("adminaccount") != null
+            && Session::get("adminaccount")->user_role == "Admin") {
+        } else {
             return redirect('/');
         }
 
