@@ -15,7 +15,7 @@ header .nav-link {
     color: #333;
     font-weight: bold;
     vertical-align: middle;
-    padding-top: 40px;
+    padding-top: 40px !important;
 }
 header .nav-link:hover {
     color: #84BD00;
@@ -26,38 +26,18 @@ header .navbar-nav .dropdown-menu-right {
 header .navbar-brand img {
     height: 100px;
 }
-/*
-h2, label, p {
-    color: #2499fb;
-}*/
+
 .inline-block {
     display: inline-block;
 }
-
-/*.btn-choose-account > .btn {
-    border-radius: 0px;
-    border: 1px solid #2499fb;
-    color: #2499fb;
-    margin: .5em 0px;
-    padding: 2em;
-    font-weight: bold;
-}
-.btn-choose-account > .btn.active,
-.btn-choose-account > .btn:hover {
-    background-color: #bce0fd !important;
-    color: #2499fb !important;
-}*/
 
 .box-co2-water img {
     width: 80px;
 }
 
-
 footer {
     background: #ddd !important;
 }
-
-
 
 .dropdown-item.active,
 .dropdown-item:active,
