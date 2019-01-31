@@ -45,14 +45,13 @@ class SwitchController extends Controller
     public function add() {
         $defaultData = [
             'name' => '',
-            'street' => '',
-            'suite' => '',
+            'address1' => '',
+            'address2' => '',
             'city' => '',
             'state' => '',
-            'zipcode' => '',
-//            'utility_company_id' => '',
-//            'utility_user' => '',
+            'postal_code' => '',
         ];
+        $defaultData = json_decode(json_encode($defaultData), false);
 
         $geonames = Geonames::getStates();
         $utilityCompanies = UtilityCompany::all(['id', 'name']);
@@ -60,7 +59,8 @@ class SwitchController extends Controller
         return view("switch.add", [
             'data' => $defaultData,
             'geonames' => $geonames,
-            'utility_company' => $utilityCompanies
+            'utility_company' => $utilityCompanies,
+            'newItem' => true
         ]);
     }
 
@@ -80,13 +80,17 @@ class SwitchController extends Controller
         
         $client = array(
             "name" => $request->input('name'),
-            "address1" => $request->input('street'),
-            "address2" => $request->input('suite'),
-            "shipping_address1" => $request->input('street'),
-            "shipping_address2" => $request->input('suite'),
+            "address1" => $request->input('address1'),
+            "address2" => $request->input('address2'),
+            "city" => $request->input('city'),
+            "state" => $request->input('state'),
+            "postal_code" => $request->input('postal_code'),
+
+            "shipping_address1" => $request->input('address1'),
+            "shipping_address2" => $request->input('address2'),
             "shipping_city" => $request->input('city'),
             "shipping_state" => $request->input('state'),
-            "shipping_postal_code" => $request->input('zipcode'),
+            "shipping_postal_code" => $request->input('postal_code'),
             "country_id" => 0,
             "contact" => array(
                 "first_name" => Auth::user()->name,

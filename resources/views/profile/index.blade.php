@@ -51,32 +51,67 @@
         <div class="mt-3 mb-3">
             <div class="d-flex bd-highlight mb-3">
                 <div class="mr-auto bd-highlight">
-                    <p><b>Service Address</b></p>
-                    <select class="form-control">
-                        @foreach($accounts as $account)
-                        <option value="{{ $account->street }}">{{ $account->street }}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="bd-highlight align-self-center">
-                    <a href="{{ url('profile/service') }}" class="btn btn-outline-primary">Need to change your service address?</a>
+                    <p><b>Name</b></p>
+                    <p>{{ $account->name }}</p>
                 </div>
             </div>
         </div>
 
         <div class="mt-3 mb-3">
-            <p><b>Utility company</b></p>
-            <p class="text-muted">{{ Session("switchaccount")->street }}</p>
+            <div class="d-flex bd-highlight mb-3">
+                <div class="mr-auto bd-highlight">
+                    <p><b>Street</b></p>
+                    <p>{{ $account->address1 }} - {{ $account->address2 }}</p>
+                </div>
+            </div>
         </div>
 
         <div class="mt-3 mb-3">
-            <p><b>Utility User ID</b></p>
-            <p class="text-muted">{{ Session("switchaccount")->utility_user }}</p>
+            <div class="d-flex bd-highlight mb-3">
+                <div class="mr-auto bd-highlight">
+                    <p><b>Apt / Suite</b></p>
+                    <p>{{ $account->address2 }}</p>
+                </div>
+            </div>
         </div>
 
         <div class="mt-3 mb-3">
-            <p><b>Utility Password</b></p>
-            <p class="text-muted">*********</p>
+            <div class="d-flex bd-highlight mb-3">
+                <div class="mr-auto bd-highlight">
+                    <p><b>City</b></p>
+                    <p>{{ $account->city }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-3 mb-3">
+            <div class="d-flex bd-highlight mb-3">
+                <div class="mr-auto bd-highlight">
+                    <p><b>State/Province</b></p>
+                    <p>{{ $account->state }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-3 mb-3">
+            <div class="d-flex bd-highlight mb-3">
+                <div class="mr-auto bd-highlight">
+                    <p><b>Postal Code</b></p>
+                    <p>{{ $account->postal_code }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-3 mb-3">
+            <div class="d-flex bd-highlight mb-3">
+                <div class="mr-auto bd-highlight">
+                    <p><b>Country</b></p>
+                    <p>{{ $account->country_id }}</p>
+                </div>
+                <div class="bd-highlight align-self-center">
+                    <a href="{{ url('profile/service') }}" class="btn btn-outline-primary">Change</a>
+                </div>
+            </div>
         </div>
     </div>
 </div>

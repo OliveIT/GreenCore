@@ -15,6 +15,7 @@ use App\Models\SwitchAccount;
 use App\Models\UtilityCompany;
 
 use Session;
+use App\InvNinja\Clients;
 
 class HomeController extends Controller
 {
@@ -39,8 +40,8 @@ class HomeController extends Controller
     }
 
     public function profile() {
-        $accounts = SwitchAccount::findCurrentSwitch();
-        return view('profile.index', ['accounts' => $accounts]);
+        $account = Session::get('switchaccount');
+        return view('profile.index', ['account' => $account]);
     }
 
     public function editPassword() {
@@ -98,22 +99,27 @@ class HomeController extends Controller
     }
 
     public function editService() {
-        $defaultData = [
-            'street' => '',
-            'city' => '',
-            'state' => '',
-            'zipcode' => '',
-            'utility_company_id' => '',
-            'utility_user' => '',
-        ];
-
         $geonames = Geonames::getStates();
         $utilityCompanies = UtilityCompany::all(['id', 'name']);
 
         return view('profile.service', [
-            'data' => $defaultData,
+            'data' => Session::get('switchaccount'),
             'geonames' => $geonames,
             'utility_company' => $utilityCompanies
         ]);
+    }
+
+    public function editAccount(Request $request) {
+        $client = Session::get('switchaccount');
+        $client->name = $request->input('name');
+        $client->address1 = $request->input('address1');
+        $client->address2 = $request->input('address2');
+        $client->city = $request->input('city');
+        $client->state = $request->input('state');
+        $client->postal_code = $request->input('postal_code');
+        
+        $data = Clients::updateClient(Session::get('switchaccount')->id, $client)->data;
+        Session::put('switchaccount', $data);
+        return redirect('profile');
     }
 }

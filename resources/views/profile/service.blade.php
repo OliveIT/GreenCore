@@ -19,7 +19,7 @@
                 'data' => $data, 
                 'geonames' => $geonames,
                 'utility_company' => $utility_company,
-                'newItem' => true])
+                'newItem' => false])
     </div>
 </div>
 @endsection

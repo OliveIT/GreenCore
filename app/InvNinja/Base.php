@@ -16,7 +16,11 @@ class Base
 
         if ($isPost) {
             $payload = json_encode($data);
-            curl_setopt($ch, CURLOPT_POST, true);
+            if ($isPost === "PUT")
+                curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
+            else
+                curl_setopt($ch, CURLOPT_POST, true);
+                
             curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
             curl_setopt($ch, CURLOPT_HTTPHEADER, array(
                 "X-Ninja-Token: $TOKEN",

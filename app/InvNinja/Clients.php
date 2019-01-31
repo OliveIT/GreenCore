@@ -11,4 +11,8 @@ class Clients extends Base
     public static function addClient($client) {
         return json_decode(self::sendRequest("/clients", true, $client));
     }
+
+    public static function updateClient($id, $client) {
+        return json_decode(self::sendRequest("/clients/$id", "PUT", $client));
+    }
 }
