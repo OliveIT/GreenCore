@@ -68,6 +68,7 @@ Route::middleware(['adminAuth'])->group(function () {
     /*Users route*/
     Route::get('/user/view', 'UserController@index');
     Route::get('/user/new','UserController@create');
+    Route::post('/user/add','UserController@addUser');
     Route::get('/user/view/{id}/view','UserController@show');
     Route::get('/user/edit/{id}/edit','UserController@edit');
     Route::post('/user/edit/{id}/update','UserController@update');

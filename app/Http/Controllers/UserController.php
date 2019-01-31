@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\User;
 use Session;
 use App\Models\SwitchAccount;
+use App\InvNinja\Clients;
 
 class UserController extends Controller
 {
@@ -48,6 +49,42 @@ class UserController extends Controller
     public function create()
     {
         return view("user.add");
+    }
+
+    public function addUser(Request $request) {
+        $rules = array(
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'phone_number' => 'required|regex:/(01)[0-9]{9}/'
+        );
+        $validator = Validator::make(Input::only('name', 'email', 'phone_number'), $rules);
+        
+        if ($validator->fails()) {
+            return Redirect::back()->withErrors($validator);
+        } else {
+            $email = $request->email;
+            $users = User::select('id')->where('email', '==', email);
+            if ($users != NULL)
+                return Redirect::back()->withErrors(['email' => 'This email is exist on this site.']);
+            
+            $data = Clients::getClientFromEmail($email)->data;
+            if (count($clients->data) == 0) {
+                return Redirect::back()->withErrors(['email' => 'This email doesn\'t not exist in Invoice Ninja.']);
+            }
+
+            User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => bcrypt('123456'),
+                'email_token' => base64_encode($request->email),
+                'phone_number' => $request->phone_number,
+                'user_role'=>"user",
+                'verified' => 1
+            ]);
+
+            return redirect('user/view');
+        }
+        
     }
 
     /**

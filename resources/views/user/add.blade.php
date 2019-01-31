@@ -29,7 +29,7 @@
 @section('content')
 <div class="col-md-6">
 <h2>Add User</h2>
-    {!! Form::open(['id'=>'form','url'=> 'user/add']) !!}
+    {!! Form::open(['id'=>'form','url'=> 'user/add', 'method' => 'post']) !!}
         <div class="form-group {{$errors->has('name')?'has-error':''}}">
             <label>User name</label>
             <input type="text" name="name" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" value="{{ old('name') }}">

@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 use InvoiceNinja\Config as NinjaConfig;
+use Route;
 
 class SwitchAccount
 {
@@ -29,7 +30,9 @@ class SwitchAccount
         NinjaConfig::setURL($API_URL);
         NinjaConfig::setToken($TOKEN);
 
-        if (Auth::User()->user_role == "Admin") {
+        $url = Route::current()->uri;
+        if (Auth::User()->user_role == "Admin"
+            && substr($url, 0, 4) != "user") {
             return redirect('user/view');
         }
         return $next($request);
