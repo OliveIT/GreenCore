@@ -29,6 +29,9 @@ class SwitchAccount
         NinjaConfig::setURL($API_URL);
         NinjaConfig::setToken($TOKEN);
 
+        if (Auth::User()->user_role == "Admin") {
+            return redirect('user/view');
+        }
         return $next($request);
     }
 }

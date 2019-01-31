@@ -45,6 +45,9 @@
                 <button type="submit" class="btn btn-outline-primary">
                     Change Password
                 </button>
+                <a class="btn btn-outline-primary" href="{{ url('/profile') }}">
+                    Back
+                </a>
             </div>
         </form>
     </div>

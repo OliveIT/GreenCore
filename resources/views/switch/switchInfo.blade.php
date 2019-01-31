@@ -57,11 +57,11 @@
     </div>*/?>
 
     <div class="form-group">
-        <button type="submit" class="btn btn-outline-primary btn-lg">
+        <button type="submit" class="btn btn-outline-primary">
             {{ $newItem ? "Add Account" : "Change Account" }}
         </button>
         @if (!$newItem)
-        <a class="btn btn-outline-primary btn-lg" href="{{ url('/profile') }}">
+        <a class="btn btn-outline-primary" href="{{ url('/profile') }}">
             Back
         </a>
         @endif
