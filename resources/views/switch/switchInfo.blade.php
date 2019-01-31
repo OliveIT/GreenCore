@@ -33,7 +33,7 @@
     </div>
 
     <div class="form-group">
-        <label for="zipcode">Zip Code</label>
+        <label for="zipcode">Postal Code</label>
         <input id="zipcode" type="text" class="form-control" name="postal_code" value="{{ $data->postal_code }}" required placeholder="Zip Code">
     </div>
 

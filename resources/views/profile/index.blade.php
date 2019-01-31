@@ -30,7 +30,7 @@
                     <p class="text-muted">************</p>
                 </div>
                 <div class="p-2 bd-highlight align-self-center">
-                    <a href="{{ url('profile/password') }}" class="btn btn-outline-primary">Edit</a>
+                    <a href="{{ url('profile/password') }}" class="btn btn-primary">Edit</a>
                 </div>
             </div>
         </div>
@@ -42,7 +42,7 @@
                     <p class="text-muted">{{ auth()->user()->phone_number }}</p>
                 </div>
                 <div class="p-2 bd-highlight align-self-center">
-                    <a href="{{ url('profile/phone') }}" class="btn btn-outline-primary">Edit</a>
+                    <a href="{{ url('profile/phone') }}" class="btn btn-primary">Edit</a>
                 </div>
             </div>
         </div>
@@ -99,17 +99,8 @@
                     <p><b>Postal Code</b></p>
                     <p>{{ $account->postal_code }}</p>
                 </div>
-            </div>
-        </div>
-
-        <div class="mt-3 mb-3">
-            <div class="d-flex bd-highlight mb-3">
-                <div class="mr-auto bd-highlight">
-                    <p><b>Country</b></p>
-                    <p>{{ $account->country_id }}</p>
-                </div>
                 <div class="bd-highlight align-self-center">
-                    <a href="{{ url('profile/service') }}" class="btn btn-outline-primary">Change</a>
+                    <a href="{{ url('profile/service') }}" class="btn btn-primary">Change</a>
                 </div>
             </div>
         </div>
