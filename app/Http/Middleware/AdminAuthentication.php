@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
+use InvoiceNinja\Config as NinjaConfig;
 
 class AdminAuthentication
 {
@@ -19,6 +20,12 @@ class AdminAuthentication
         if (Auth::User()->user_role != "Admin") {
             return redirect('/');
         }
+
+        $API_URL = env("INVNINJA_URL", "https://invoice.greencoreelectric.com/api/v1");
+        $TOKEN = env("INVNINJA_TOKEN", "kgz2io3ee6vviwo3egsbncxpbtsiyvhj");
+
+        NinjaConfig::setURL($API_URL);
+        NinjaConfig::setToken($TOKEN);
 
         return $next($request);
     }

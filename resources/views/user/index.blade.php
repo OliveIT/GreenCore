@@ -27,21 +27,27 @@
         <th>ID</th>
         <th>Name</th>
         <th>Email</th>
-        <th>Phone Number</th>
+        <th>Street</th>
+        <th>Apt / Suite</th>
+        <th>City</th>
+        <th>State</th>
         <th>Action</th>
     </tr>
     @foreach($users as $user)
         <tr>
             <td>{{$user->id}}</td>
             <td>{{$user->name}}</td>
-            <td>{{$user->email}}</td>
-            <td>{{$user->phone_number}}</td>
+            <td>{{$user->contacts [0]->email}}</td>
+            <td>{{$user->address1}}</td>
+            <td>{{$user->address2}}</td>
+            <td>{{$user->city}}</td>
+            <td>{{$user->state}}</td>
 
             <td>
                 <div class="btn-group">
                     <a href="{{ url('/user/view',[$user->id,'view']) }}" class="btn btn-primary">
                         <i class="fas fa-tv" aria-hidden="true"> </i> View</a>
-                    <a class="btn btn-danger" href="{{ url('/user/delete',[$user->id,'delete']) }}">
+                    <a class="btn btn-danger" href="{{ url('/user/delete',[$user->user_id,'delete']) }}">
                         <i class="fa fa-trash" aria-hidden="true"> </i> Delete</a>
                 </div>
             </td>

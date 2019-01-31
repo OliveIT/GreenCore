@@ -9,6 +9,7 @@ use App\User;
 use Session;
 use App\Models\SwitchAccount;
 use App\InvNinja\Clients;
+use InvoiceNinja\Models\Client;
 
 class UserController extends Controller
 {
@@ -38,7 +39,21 @@ class UserController extends Controller
             )->where('users.id', '!=', Auth::User()->id)
             ->paginate(10);
 
-        return view('user.index', compact('users'));
+        $clients = Client::all();
+        $userData = [];
+
+        foreach($users as $user) {
+            foreach($clients as $client) {
+                if ($user->email == $client->contacts [0]->email) {
+                    $client->user_id = $user->id;
+                    $userData [] = $client;
+                }
+            }
+        }
+
+        return view('user.index', array(
+            "users" => $userData
+        ));
     }
 
     /**
@@ -106,12 +121,10 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $userById = User::find($id);
-        $switchAccounts = SwitchAccount::where("user_id", $id)->get();
+        $client = Client::find($id);
 
         return view('user.view', [
-            'user' => $userById,
-            'accounts' => $switchAccounts
+            'client' => $client
         ]);
     }
 

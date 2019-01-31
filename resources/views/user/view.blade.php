@@ -29,41 +29,49 @@
 @section('content')
 <div class="row">
     <div class="col-md-6">
-        <h2>User Profile</h2>
+        <h2>{{ $client->name }}</h2>
         <div class="form-group">
-            <label class="form-label">User name</label>
-            <p class="text-muted">{{$user->name}}</p>
+            <label class="form-label">Street</label>
+            <p class="text-muted">{{ $client->address1 }}</p>
         </div>
-
         <div class="form-group">
-            <label>User email</label>
-            <p class="text-muted">{{$user->email}}</p>
+            <label class="form-label">APT / Suite</label>
+            <p class="text-muted">{{ $client->address2 }}</p>
         </div>
-
-        <div class="form-group">
-            <label>User phone number</label>
-            <p class="text-muted">{{$user->phone_number}}</p>
-        </div>
-    </div>
-
-    @foreach ($accounts as $account)
-    <div class="col-md-6">
-        <h2>Account ({{ $account->street }})</h2>
         <div class="form-group">
             <label class="form-label">City</label>
-            <p class="text-muted">{{$account->city}}</p>
+            <p class="text-muted">{{ $client->city }}</p>
         </div>
         <div class="form-group">
             <label class="form-label">State</label>
-            <p class="text-muted">{{$account->state}}</p>
+            <p class="text-muted">{{ $client->state }}</p>
         </div>
         <div class="form-group">
-            <label class="form-label">Zipcode</label>
-            <p class="text-muted">{{$account->zipcode}}</p>
+            <label class="form-label">Work Phone</label>
+            <p class="text-muted">{{ $client->work_phone }}</p>
         </div>
     </div>
-    @endforeach
+    <div class="col-md-6">
+        <?php $contact = $client->contacts [0]; ?>
+        <h2>{{ $contact->email }}</h2>
+        <div class="form-group">
+            <label class="form-label">First Name</label>
+            <p class="text-muted">{{ $contact->first_name }}</p>
+        </div>
+        <div class="form-group">
+            <label class="form-label">Last Name</label>
+            <p class="text-muted">{{ $contact->last_name }}</p>
+        </div>
+        <div class="form-group">
+            <label class="form-label">Phone Number</label>
+            <p class="text-muted">{{ $contact->phone }}</p>
+        </div>
+    </div>
+    <div class="col-12">
+        <div class="btn-group">
+            <a class="btn btn-primary" href="{{ url('user/view') }}">Back</a>
+        </div>
+    </div>
 </div>
 
-<a class="btn btn-outline-primary" href="{{ url('user/view') }}">Back</a>
 @endsection
