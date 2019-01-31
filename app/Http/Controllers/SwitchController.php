@@ -44,12 +44,14 @@ class SwitchController extends Controller
 
     public function add() {
         $defaultData = [
+            'name' => '',
             'street' => '',
+            'suite' => '',
             'city' => '',
             'state' => '',
             'zipcode' => '',
-            'utility_company_id' => '',
-            'utility_user' => '',
+//            'utility_company_id' => '',
+//            'utility_user' => '',
         ];
 
         $geonames = Geonames::getStates();
@@ -63,7 +65,7 @@ class SwitchController extends Controller
     }
 
     public function addAccount(Request $request) {
-        $client = new SwitchAccount();
+        /*$client = new SwitchAccount();
 
         $client->user_id = Auth::User()->id;
         $client->street = $request->input('street');
@@ -74,13 +76,28 @@ class SwitchController extends Controller
         $client->utility_user = $request->input('utility_user');
         $client->utility_password = $request->input('utility_password');
 
-        $client->save();
+        $client->save();*/
+        
+        $client = array(
+            "name" => $request->input('name'),
+            "address1" => $request->input('street'),
+            "address2" => $request->input('suite'),
+            "shipping_address1" => $request->input('street'),
+            "shipping_address2" => $request->input('suite'),
+            "shipping_city" => $request->input('city'),
+            "shipping_state" => $request->input('state'),
+            "shipping_postal_code" => $request->input('zipcode'),
+            "country_id" => 0,
+            "contact" => array(
+                "first_name" => Auth::user()->name,
+                "last_name" => "",
+                "email" => Auth::user()->email,
+            )
+        );
 
-        $user = Auth::user();
-        $user->switch_account_id = $client->id;
-        $user->save();
+        $data = Clients::addClient($client)->data;
 
-        Session::put('switchaccount', $client);
+        Session::put('switchaccount', $data);
 
         return redirect('/home');
     }

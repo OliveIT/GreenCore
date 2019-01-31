@@ -10,14 +10,24 @@ class Base
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $API_URL . $url);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-            "X-Ninja-Token: ".$TOKEN
-        ));
         curl_setopt($ch, CURLOPT_HEADER, 0);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+        curl_setopt($ch, CURLINFO_HEADER_OUT, true);
 
-        if ($isPost)
+        if ($isPost) {
+            $payload = json_encode($data);
             curl_setopt($ch, CURLOPT_POST, true);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
+            curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+                "X-Ninja-Token: $TOKEN",
+                'Content-Type: application/json',
+                'Content-Length: ' . strlen($payload)
+            ));
+        } else {
+            curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+                "X-Ninja-Token: $TOKEN",
+            ));
+        }
 
         $data = curl_exec($ch);
         curl_close($ch);

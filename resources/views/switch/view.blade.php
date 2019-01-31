@@ -16,9 +16,11 @@
                     <input type="radio" name="options" id="option2" autocomplete="off" checked> Active
                 </label> -->
                 @foreach($accounts as $account)
+                @if (!$account->is_deleted)
                 <label class="btn btn-outline-primary btn-lg w-100 btn-account" data-id="{{ $account->id }}">
                     <input type="radio" name="options" autocomplete="off" checked> {{ $account->address1 }} - {{ $account->address2 }}
                 </label>
+                @endif
                 @endforeach
                 
                 <label class="btn btn-outline-primary btn-lg w-100" id="option-add">
