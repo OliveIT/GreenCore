@@ -47,7 +47,7 @@
                 <div class="btn-group">
                     <a href="{{ url('/user/view',[$user->id,'view']) }}" class="btn btn-primary">
                         <i class="fas fa-tv" aria-hidden="true"> </i> View</a>
-                    <a class="btn btn-danger" href="{{ url('/user/delete',[$user->user_id,'delete']) }}">
+                    <a class="btn btn-danger btn-remove" href="#" data-link="{{ url('/user/delete',[$user->user_id,'delete']) }}">
                         <i class="fa fa-trash" aria-hidden="true"> </i> Delete</a>
                 </div>
             </td>
@@ -59,4 +59,12 @@
 
 @section('js')
 
+<script>
+$(function() {
+    $(".btn-remove").bind("click", function(e) {
+        if (!confirm("Do you want to delete this user?")) return;
+        window.open($(this).data("link"), "_self");
+    });
+})
+</script>
 @endsection

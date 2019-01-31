@@ -5,11 +5,14 @@ namespace App\Http\Controllers;
 use Auth;
 use App\Location;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 use App\User;
 use Session;
 use App\Models\SwitchAccount;
 use App\InvNinja\Clients;
 use InvoiceNinja\Models\Client;
+use Validator;
+use Redirect;
 
 class UserController extends Controller
 {
@@ -77,27 +80,30 @@ class UserController extends Controller
         if ($validator->fails()) {
             return Redirect::back()->withErrors($validator);
         } else {
-            $email = $request->email;
-            $users = User::select('id')->where('email', '==', email);
+            $name = $request->input('name');
+            $email = $request->input('email');
+            $phone_number = $request->input('phone_number');
+
+            $users = User::select('id')->where('email', '==', $email)->first();
             if ($users != NULL)
                 return Redirect::back()->withErrors(['email' => 'This email is exist on this site.']);
             
             $data = Clients::getClientFromEmail($email)->data;
-            if (count($clients->data) == 0) {
+            if (count($data) == 0) {
                 return Redirect::back()->withErrors(['email' => 'This email doesn\'t not exist in Invoice Ninja.']);
             }
 
             User::create([
-                'name' => $request->name,
-                'email' => $request->email,
+                'name' => $name,
+                'email' => $email,
                 'password' => bcrypt('123456'),
-                'email_token' => base64_encode($request->email),
-                'phone_number' => $request->phone_number,
+                'email_token' => base64_encode($email),
+                'phone_number' => $phone_number,
                 'user_role'=>"user",
                 'verified' => 1
             ]);
 
-            return redirect('user/view');
+            return redirect("user/view");
         }
         
     }
