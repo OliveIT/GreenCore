@@ -22,29 +22,28 @@
 </head>
 <body class="h-100">
     @include('layouts.header')
-    <div id="app" class="cover-container d-flex w-100 h-100 mx-auto flex-column">
+    <div id="wrapper" class="d-flex">
         @yield('message')
 
-        <div class="container-fluid mt-3 mb-4">
-            <div class="row">
-                <div class="col-md-2 d-none d-md-block bg-light sidebar">
-                    @include('layouts.sidebar')
+        @include('layouts.sidebar')
+        <div id="page-content-wrapper">
+            <div class="container-fluid mt-3 mb-4">
+                <button class="btn btn-primary btn-sidebar-toggle" id="menu-toggle">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                @yield('content')
+            </div>
+
+            <footer class="mastfoot mt-auto p-4">
+                <div class="inner text-center">
+                    <p>Support</p>
+                    <p>FAQs</p>
+                    <p class="border-top d-inline">CustServ@GreenCoreElectric.com</p>
+
+                    <p class="muted mt-3">&copy; 2018 Green Core Electric.</p>
                 </div>
-                <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-                    @yield('content')
-                </main>
-            </div>
+            </footer>
         </div>
-
-        <footer class="mastfoot mt-auto p-4">
-            <div class="inner text-center">
-                <p>Support</p>
-                <p>FAQs</p>
-                <p class="border-top d-inline">CustServ@GreenCoreElectric.com</p>
-
-                <p class="muted mt-3">&copy; 2018 Green Core Electric.</p>
-            </div>
-        </footer>
     </div>
 
     <!-- Scripts -->
@@ -63,6 +62,11 @@
     @yield('js')
     <script>
         $('#flash-overlay-modal').modal();
+
+        $("#menu-toggle").click(function(e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
     </script>
 
 </body>
