@@ -28,9 +28,6 @@
         @include('layouts.sidebar')
         <div id="page-content-wrapper">
             <div class="container-fluid mt-3 mb-4">
-                <button class="btn btn-primary btn-sidebar-toggle" id="menu-toggle">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
                 @yield('content')
             </div>
 
@@ -66,6 +63,7 @@
         $("#menu-toggle").click(function(e) {
             e.preventDefault();
             $("#wrapper").toggleClass("toggled");
+            $(this).toggleClass("toggled");
         });
     </script>
 
