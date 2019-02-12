@@ -20,7 +20,7 @@
             <tbody>
                 @foreach ($data as $item)
                 <tr>
-                    <td>{{ $item->custom_text_value1 }}</td>
+                    <td>{{ $item->invoice_date }}</td>
                     <td>{{ $item->due_date }}</td>
                     <td>{{ $item->amount }}</td>
                     <td>{{ $item->balance }}</td>

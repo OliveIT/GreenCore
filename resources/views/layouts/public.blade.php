@@ -33,15 +33,7 @@
             </div>
         </div>
 
-        <footer class="mastfoot mt-auto p-4">
-            <div class="inner text-center">
-                <p>Support</p>
-                <p>FAQs</p>
-                <p class="border-top d-inline">CustServ@GreenCoreElectric.com</p>
-
-                <p class="muted mt-3">&copy; 2018 Green Core Electric.</p>
-            </div>
-        </footer>
+        @include('layouts.footer')
     </div>
 
     <!-- Scripts -->

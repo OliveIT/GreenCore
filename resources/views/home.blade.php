@@ -18,7 +18,7 @@
                     </div>
                     <div class="col-md-8">
                         <div>
-                            <h3><b>345</b>Tree Planted</h3>
+                            <h3><b>345</b> Tree Planted</h3>
                             <p class="feedback"><u>Learn more</u></p>
                         </div>
                     </div>
@@ -32,7 +32,7 @@
                     </div>
                     <div class="col-md-8">
                         <div>
-                            <h3><b>430</b>Showers Skipped</h3>
+                            <h3><b>430</b> Showers Skipped</h3>
                             <p class="feedback"><u>Learn more</u></p>
                         </div>
                     </div>

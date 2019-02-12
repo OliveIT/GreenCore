@@ -2,10 +2,10 @@
 
 @section('content')
 <div class="row">
-    <div class="col-md-9">
-        <h2 class="mt-5">Billing</h2>
+    <div class="col-md-12">
+        <h2>Billing</h2>
 
-        <table class="table">
+        <!-- <table class="table">
             <thead>
                 <tr>
                     <th>Item</th>
@@ -26,8 +26,12 @@
                 </tr>
                 @endforeach
             </tbody>
-        </table>
-        <object data="data:application/pdf;base64,<?=base64_encode($pdf)?>" type="application/pdf" style="height:500px;width:100%"></object>
+        </table> -->
+        <object data="data:application/pdf;base64,<?=base64_encode($pdf)?>" type="application/pdf" style="height:700px;width:100%"></object>
+        
+        <div class="form-group text-right">
+            <a class="btn btn-outline-primary" href="{{ url('/bill') }}">Back</a>
+        </div>
     </div>
 </div>
 @endsection
