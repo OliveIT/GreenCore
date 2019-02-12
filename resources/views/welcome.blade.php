@@ -19,23 +19,7 @@
 </head>
 <body>
 
-<header class="navbar navbar-expand flex-column flex-md-row bd-navbar w-100">
-    <div class="inner">
-        <a class="navbar-brand mr-0 mr-md-2" href="{{url('/')}}" aria-label="Bootstrap">
-            <img src="{{asset('assets/images/brand.png')}}"/>
-        </a>
-        @if (Route::has('login'))
-        <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
-            @if (Auth::check())
-                <li class="nav-item"><a class="nav-link p-2" href="{{ url('/home') }}">Home</a></li>
-            @else
-                <li class="nav-item"><a class="nav-link p-2" href="{{ url('/login') }}">Login</a></li>
-                <li class="nav-item"><a class="nav-link p-2" href="{{ url('/register') }}">Register</a></li>
-            @endif
-        </ul>
-        @endif
-    </div>
-</header>
+@include('layouts.header')
 {{--search section--}}
 
 <section>
