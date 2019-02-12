@@ -53,7 +53,8 @@ class UsageController extends Controller
         $invData = array();
         foreach ($data as $item) {
             $invDate = substr($item->invoice_date, 0, 7);
-            $totalData [$invDate] += ($item->custom_text_value2 ? (float)$item->custom_text_value2 : 0);
+            if (isset($totalData [$invDate]))
+                $totalData [$invDate] += ($item->custom_text_value2 ? (float)$item->custom_text_value2 : 0);
         }
         return view("usage.index", array("invData" => $totalData));
     }
