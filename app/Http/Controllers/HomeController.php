@@ -41,7 +41,10 @@ class HomeController extends Controller
 
     public function profile() {
         $account = Session::get('switchaccount');
-        return view('profile.index', ['account' => $account]);
+        $accounts = Clients::getClientFromEmail(auth()->user()->email)->data;
+        return view('profile.index', [
+            'accounts'=> $accounts,
+            'account' => $account]);
     }
 
     public function editPassword() {

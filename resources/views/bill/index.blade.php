@@ -3,8 +3,6 @@
 @section('content')
 <div class="row">
     <div class="col-md-9">
-        <h4>Hi, <b>{{ auth()->user()->name }}</b>. Welcome to your account</h4>
-
         <h2 class="mt-5">Current Bills</h2>
         <table class="table">
             <thead>

@@ -5,7 +5,7 @@
 
 @section('content')
 <div class="mx-auto mt-4 mb-4">
-    <h2 class="text-center">Profile</h2>
+    <h4>Hi, <b>{{ auth()->user()->name }}</b>. Welcome to your account</h4>
 </div>
 
 <div class="row">
@@ -46,6 +46,20 @@
                 </div>
             </div>
         </div>
+
+        <div class="mt-3 mb-3">
+            <div class="d-flex bd-highlight mb-3">
+                <div class="mr-auto p-2 bd-highlight">
+                    <p><b>Accounts</b></p>
+                    @foreach($accounts as $account)
+                        @if (!$account->is_deleted)
+                        <a href="{{ url('/switch/set').'/'.$account->id }}" class="d-block">
+                            {{ $account->address1 }} - {{ $account->address2 }}</a>
+                        @endif
+                    @endforeach
+                </div>
+            </div>
+        </div>
     </div>
     <div class="col-md-6">
         <div class="mt-3 mb-3">
@@ -60,8 +74,8 @@
         <div class="mt-3 mb-3">
             <div class="d-flex bd-highlight mb-3">
                 <div class="mr-auto bd-highlight">
-                    <p><b>Street</b></p>
-                    <p>{{ $account->address1 }} - {{ $account->address2 }}</p>
+                    <p><b>Address</b></p>
+                    <p>{{ $account->address1 }}</p>
                 </div>
             </div>
         </div>
@@ -71,6 +85,24 @@
                 <div class="mr-auto bd-highlight">
                     <p><b>Apt / Suite</b></p>
                     <p>{{ $account->address2 }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-3 mb-3">
+            <div class="d-flex bd-highlight mb-3">
+                <div class="mr-auto bd-highlight">
+                    <p><b>Shipping Address</b></p>
+                    <p>{{ $account->shipping_address1 }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-3 mb-3">
+            <div class="d-flex bd-highlight mb-3">
+                <div class="mr-auto bd-highlight">
+                    <p><b>Shipping Apt / Suite</b></p>
+                    <p>{{ $account->shipping_address2 }}</p>
                 </div>
             </div>
         </div>
