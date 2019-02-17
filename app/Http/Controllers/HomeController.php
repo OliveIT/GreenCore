@@ -16,6 +16,7 @@ use App\Models\UtilityCompany;
 
 use Session;
 use App\InvNinja\Clients;
+use App\InvNinja\Invoices;
 
 class HomeController extends Controller
 {
@@ -36,7 +37,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $invoices = Invoices::getFromClientId(Session::get("switchaccount")->id)->data;
+        $sumEnergy = 0;
+        foreach ($invoices as $invoice) {
+            if (!$invoice->custom_text_value2) continue;
+            $sumEnergy += $invoice->custom_text_value2;
+        }
+        return view('home', array(
+            "energy" => $sumEnergy
+        ));
     }
 
     public function profile() {

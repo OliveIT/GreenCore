@@ -36,6 +36,9 @@ Route::middleware(['switch'])->group(function () {
     
     /*Usage route*/
     Route::get('/usage','UsageController@index');
+    
+    /*Referral route*/
+    Route::get('/referral','ReferralController@index');
 
     /*Locations route*/
 /*    Route::get('/location/create','LocationController@create');

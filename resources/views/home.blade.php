@@ -18,8 +18,8 @@
                     </div>
                     <div class="col-md-8">
                         <div>
-                            <h3><b>345</b> Tree Planted</h3>
-                            <p class="feedback"><u>Learn more</u></p>
+                            <h3><b>{{ floor($energy / 900 * 209) }}</b> Tree Planted</h3>
+                            <a class="feedback" href="#">Learn more</a>
                         </div>
                     </div>
                 </div>
@@ -32,8 +32,8 @@
                     </div>
                     <div class="col-md-8">
                         <div>
-                            <h3><b>430</b> Showers Skipped</h3>
-                            <p class="feedback"><u>Learn more</u></p>
+                            <h3><b>{{ floor($energy / 2) }}</b> Showers Skipped</h3>
+                            <a class="feedback" href="#">Learn more</a>
                         </div>
                     </div>
                 </div>

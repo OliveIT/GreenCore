@@ -84,23 +84,25 @@ nav.navbar {
   min-width: 100vw;
 }
 
+#page-content-wrapper > .container-fluid {
+  min-height: calc(100vh - 100px);
+}
+
 #wrapper.toggled #sidebar-wrapper {
   margin-left: 0;
 }
 
-@media (min-width: 768px) {
-  #sidebar-wrapper {
-    margin-left: 0;
-  }
+#sidebar-wrapper {
+  margin-left: 0;
+}
 
-  #page-content-wrapper {
-    min-width: 0;
-    width: 100%;
-  }
+#page-content-wrapper {
+  min-width: 0;
+  width: 100%;
+}
 
-  #wrapper.toggled #sidebar-wrapper {
-    margin-left: -15rem;
-  }
+#wrapper.toggled #sidebar-wrapper {
+  margin-left: -15rem;
 }
 
 .btn-sidebar-toggle .navbar-toggler-icon {
