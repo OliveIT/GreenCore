@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 
 use App\Models\Geonames;
+use App\Models\Referral;
 use App\Models\SwitchAccount;
 use App\Models\UtilityCompany;
 
@@ -39,12 +40,39 @@ class HomeController extends Controller
     {
         $invoices = Invoices::getFromClientId(Session::get("switchaccount")->id)->data;
         $sumEnergy = 0;
+        $invGraphData = array();
+        $curYear = date("Y") - 1;
+        $curMonth = date("n") + 1;
+
+        for ($i = 0; $i < 12; $i ++) {
+            $zeroStr = "";
+            
+            if ($curMonth == 13) {
+                $curMonth = 1;
+                $curYear ++;
+            }
+            if ($curMonth < 10) $zeroStr = "0";
+
+            $newDate = sprintf('%d-%s%d', $curYear, $zeroStr, $curMonth);
+            $invGraphData [$newDate] = 0;
+            $curMonth ++;
+        }
+
         foreach ($invoices as $invoice) {
             if (!$invoice->custom_text_value2) continue;
+
             $sumEnergy += $invoice->custom_text_value2;
+            $date = substr($invoice->invoice_date, 0, 7);
+
+            if (isset($invGraphData [$date]))
+                $invGraphData [$date] += $invoice->custom_text_value2;
         }
+
+        $referrals = Referral::getReffersById(Session::get("switchaccount")->id);
         return view('home', array(
-            "energy" => $sumEnergy
+            "energy" => $sumEnergy,
+            "referrals" => $referrals,
+            "invGraphData" => $invGraphData
         ));
     }
 

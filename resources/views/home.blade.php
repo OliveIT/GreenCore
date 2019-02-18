@@ -32,7 +32,7 @@
                     </div>
                     <div class="col-md-8">
                         <div>
-                            <h3><b>{{ floor($energy / 2) }}</b> Showers Skipped</h3>
+                            <h3><b>{{ floor($energy / 34) }}</b> Showers Skipped</h3>
                             <a class="feedback" href="#">Learn more</a>
                         </div>
                     </div>
@@ -74,21 +74,13 @@
                 </tr>
             </thead>
             <tbody>
+                @foreach ($referrals as $referral)
                 <tr>
-                    <td>Jennifer Lindeman</td>
-                    <td>$5.98</td>
-                    <td>Pending</td>
+                    <td>{{ referral ["name"] }}</td>
+                    <td></td>
+                    <td></td>
                 </tr>
-                <tr>
-                    <td>Jennifer Lindeman</td>
-                    <td>$5.98</td>
-                    <td>Pending</td>
-                </tr>
-                <tr>
-                    <td>Jennifer Lindeman</td>
-                    <td>$5.98</td>
-                    <td>Pending</td>
-                </tr>
+                @endforeach
             </tbody>
         </table>
         
@@ -97,7 +89,7 @@
             They get 3 months of free upgrade to clean energy and you get 1 month of free upgrade, for anyone that signs up and completes the first billing cycle.
         </p>
 
-        <button class="btn btn-outline-primary btn-lg">Refer Now</button>
+        <button class="btn btn-outline-primary btn-lg" onclick="onReferNow()">Refer Now</button>
     </div>
 </div>
 @endsection
@@ -111,16 +103,18 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.symbol.min.js"></script>
 <!-- <script type="text/javascript" src="http://www.jqueryflottutorial.com/js/flot/jquery.flot.axislabels.js"></script> -->
 <script>
-//Asia
-var rawData6 = [
-    [year(1800), 635], [year(1850), 809], [year(1900), 947], [year(1950), 1399], [year(1955), 1541],
-    [year(1960), 1674], [year(1965), 1899], [year(1970), 2142], [year(1975), 2397], [year(1980), 2634],
-    [year(1985), 2887], [year(1990), 3181], [year(1995), 3435], [year(2000), 3679], [year(2005), 3917],
-    [year(2010), 4119]
-];
+var data = <?=json_encode($invGraphData)?>;
+var rawData = [];
+var ticks = [];
+var index = 0;
+for (var key in data) {
+    rawData.push([index, data [key] / 900 * 209]);
+    ticks.push([index, key]);
+    index ++;
+}
 
 var dataSet = [
-    { label: "Asia", data: rawData6, color: "#84BD00" },
+    { label: "Tree", data: rawData, color: "#84BD00" },
 ];
 
 var options = {
@@ -131,23 +125,19 @@ var options = {
         }
     },
     xaxis: {
-        axisLabelUseCanvas: true,
-        axisLabelFontSizePixels: 12,
-        axisLabelFontFamily: 'Verdana, Arial',
-        axisLabelPadding: 10,        
-        mode: "time",
-        tickSize: [20, "year"],
-        timeformat: "%Y"
-    },
-    yaxis: {
         axisLabel: "Tree Planted",
         axisLabelUseCanvas: true,
         axisLabelFontSizePixels: 12,
         axisLabelFontFamily: 'Verdana, Arial',
+        axisLabelPadding: 10,
+        ticks: ticks
+    },
+    yaxis: {
+        axisLabel: "Date",
+        axisLabelUseCanvas: true,
+        axisLabelFontSizePixels: 12,
+        axisLabelFontFamily: 'Verdana, Arial',
         axisLabelPadding: 3,
-        /*tickFormatter: function (v, axis) {
-            return $.formatNumber(v, { format: "#,###", locale: "us" });
-        }*/
     },
     legend: {
         show: false,
@@ -166,11 +156,6 @@ $(document).ready(function () {
     $.plot($("#flot-placeholder"), dataSet, options);    
     $("#flot-placeholder").UseTooltip();
 });
-
-function year(year) {    
-    return new Date(year, 1, 1).getTime();
-}
-
 
 var previousPoint = null, previousLabel = null;
 
@@ -218,5 +203,8 @@ $.fn.UseTooltip = function () {
         }
     });*/
 };
+
+function onReferNow() {
+}
 </script>
 @endsection
