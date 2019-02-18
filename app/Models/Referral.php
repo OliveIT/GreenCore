@@ -18,4 +18,11 @@ class Referral extends Model
         WHERE user_id = $id
         ");
     }
+
+    public static function insert($user_id, $refer_id) {
+        DB::table('referral')->insert([
+            ['user_id' => $user_id, 'votes' => 0],
+            ['refer_id' => $refer_id, 'votes' => 0],
+        ]);
+    }
 }

@@ -2,9 +2,10 @@
 
 
 
-Route::get('/', function () {
+Route::get('/', 'WelcomeController@index');
+/*Route::get('/', function () {
     return view('welcome');
-});
+});*/
 Route::get('404',function (){
    return view('404');
 });

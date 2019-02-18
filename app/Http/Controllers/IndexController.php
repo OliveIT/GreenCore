@@ -99,7 +99,6 @@ class IndexController extends Controller
      */
     public function teacherSearch(Request $request)
     {
-
         $teachers = Post::join('locations','locations.id','posts.location_id')
             ->join('users','users.id','posts.created_by')
             ->where('users.user_role','Teacher')

@@ -99,6 +99,11 @@ class RegisterController extends Controller
 //Only for test mode.
         event(new Registered($user = $this->create($request->all())));
 
+        if (isset($_COOKIE ["refer_id"]) && $_COOKIE ["refer_id"] != 0) {
+            $refer_id = $_COOKIE ["refer_id"];
+            Referral::insert($user->id, $refer_id);
+        }
+
 //        dispatch(new SendVerificationEmail($user));
 
 //        return view('verification');

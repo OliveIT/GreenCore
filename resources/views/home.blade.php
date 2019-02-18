@@ -205,6 +205,15 @@ $.fn.UseTooltip = function () {
 };
 
 function onReferNow() {
+    const referUrl = "<?=URL::to('/?refer_id='.Auth::user()->id)?>";
+    const el = document.createElement('textarea');
+    el.value = referUrl;
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+
+    alert("Referal url is copied to clipboard.");
 }
 </script>
 @endsection
