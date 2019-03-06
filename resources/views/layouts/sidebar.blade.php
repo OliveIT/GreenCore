@@ -23,7 +23,7 @@
                     <i class="fas fa-history"> </i> Usage History</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ url('/referral') }}">
+                <a class="nav-link <?=$url == 'referral' ? 'active' : ""?>" href="{{ url('/referral') }}">
                     <i class="fas fa-hands"> </i> Referrals</span></a>
             </li>
             <li class="nav-item">

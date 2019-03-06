@@ -11,7 +11,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 
 use App\Models\Geonames;
-use App\Models\Referral;
 use App\Models\SwitchAccount;
 use App\Models\UtilityCompany;
 
@@ -68,10 +67,8 @@ class HomeController extends Controller
                 $invGraphData [$date] += $invoice->custom_text_value2;
         }
 
-        $referrals = Referral::getReffersById(Session::get("switchaccount")->id);
         return view('home', array(
             "energy" => $sumEnergy,
-            "referrals" => $referrals,
             "invGraphData" => $invGraphData
         ));
     }

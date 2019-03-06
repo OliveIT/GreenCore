@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Location;
 use Illuminate\Http\Request;
 use App\Models\Geonames;
+use App\Models\Referral;
 use App\Models\SwitchAccount;
 use App\Models\UtilityCompany;
 use Illuminate\Support\Facades\Auth;
@@ -28,7 +29,9 @@ class ReferralController extends Controller
      */
     public function index()
     {
+        $referrals = Referral::getReffersById(Auth::User()->id);
         return view("referral.index", array(
+            "referrals" => $referrals,
         ));
     }
     

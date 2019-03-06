@@ -12,7 +12,8 @@ class Referral extends Model
 
     public static function getReffersById($id) {
         return DB::select("
-        SELECT users.*
+        SELECT users.name,
+                referral.created_at
         FROM referral
         LEFT JOIN users ON(users.id = referral.refer_id)
         WHERE user_id = $id
